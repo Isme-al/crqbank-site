@@ -15,454 +15,659 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Exo:wght@400;600;700&family=Open+Sans:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
   <style>
+    /* ===== VARIABLES ===== */
     :root {
-      --foreground: rgba(23, 15, 76, 1);
-      --background: rgba(255, 255, 255, 1);
+      --fg: rgba(23, 15, 76, 1);
+      --bg: #ffffff;
       --main-fg: rgba(240, 241, 255, 1);
       --main-bg: rgba(68, 71, 124, 1);
       --promo-fg: rgba(68, 71, 124, 1);
       --promo-bg: rgba(240, 241, 255, 1);
-      --light-secondary-fg: rgba(23, 15, 76, 1);
-      --light-secondary-bg: rgba(207, 211, 249, 1);
-      --btn-fg: rgba(255, 255, 255, 1);
+      --sec-fg: rgba(23, 15, 76, 1);
+      --sec-bg: rgba(207, 211, 249, 1);
+      --btn-fg: #ffffff;
       --btn-bg: rgba(23, 15, 76, 1);
-      --radius-btn: 8px;
-      --radius-form: 8px;
-      --radius-img: 8px;
-      --font-default: 'Exo', sans-serif;
-      --font-secondary: 'Open Sans', sans-serif;
+      --r: 8px;
+      --font-h: 'Exo', sans-serif;
+      --font-b: 'Open Sans', sans-serif;
+      --header-h: 72px;
     }
+
+    /* ===== RESET ===== */
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; }
-    body { font-family: var(--font-secondary); color: var(--foreground); background: var(--background); line-height: 1.6; -webkit-font-smoothing: antialiased; }
+    html { scroll-behavior: smooth; scroll-padding-top: var(--header-h); }
+    body { font-family: var(--font-b); color: var(--fg); background: var(--bg); line-height: 1.6; -webkit-font-smoothing: antialiased; overflow-x: hidden; }
     img { max-width: 100%; height: auto; display: block; }
     a { text-decoration: none; color: inherit; }
     ul { list-style: none; }
+    button { font-family: inherit; }
+
+    /* ===== UTILITIES ===== */
     .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; width: 100%; }
-    .container--narrow { max-width: 920px; margin: 0 auto; padding: 0 24px; width: 100%; }
-    .text-center { text-align: center; }
-    h1 { font-family: var(--font-default); font-weight: 600; font-size: 2.5rem; line-height: 1.2; }
-    h2 { font-family: var(--font-default); font-weight: 600; font-size: 2rem; line-height: 1.3; }
-    p, li { font-family: var(--font-secondary); font-size: 1.125rem; line-height: 1.6; }
+    .narrow { max-width: 920px; margin: 0 auto; padding: 0 24px; width: 100%; }
+    .tc { text-align: center; }
+
+    /* ===== TYPOGRAPHY ===== */
+    h1 { font-family: var(--font-h); font-weight: 700; font-size: 2.5rem; line-height: 1.15; letter-spacing: -0.02em; }
+    h2 { font-family: var(--font-h); font-weight: 600; font-size: 2rem; line-height: 1.25; letter-spacing: -0.01em; }
+    h3 { font-family: var(--font-h); font-weight: 600; font-size: 1.5rem; line-height: 1.3; }
+    p, li { font-size: 1.125rem; line-height: 1.7; }
     @media (min-width: 1024px) {
-      h1 { font-size: 3rem; line-height: 1.15; }
-      h2 { font-size: 2.25rem; line-height: 1.25; }
+      h1 { font-size: 3.25rem; }
+      h2 { font-size: 2.5rem; }
     }
-    .btn { display: inline-flex; align-items: center; justify-content: center; padding: 16px 32px; font-family: var(--font-secondary); font-weight: 600; font-size: 1rem; line-height: 1.5; border-radius: var(--radius-btn); border: 1px solid transparent; cursor: pointer; transition: background 0.15s, transform 0.1s; text-decoration: none; }
-    .btn--primary { background: var(--btn-bg); color: var(--btn-fg); }
-    .btn--primary:hover { background: rgba(23, 15, 76, 0.88); }
-    .btn--primary:active { transform: scale(0.98); }
+
+    /* ===== BUTTONS ===== */
+    .btn {
+      display: inline-flex; align-items: center; justify-content: center;
+      padding: 16px 36px; font-family: var(--font-b); font-weight: 700;
+      font-size: 1rem; line-height: 1.5; border-radius: var(--r);
+      border: none; cursor: pointer;
+      transition: all 0.2s ease; text-decoration: none;
+      position: relative; overflow: hidden;
+    }
+    .btn::after {
+      content: ''; position: absolute; inset: 0;
+      background: rgba(255,255,255,0); transition: background 0.2s;
+    }
+    .btn:hover::after { background: rgba(255,255,255,0.1); }
+    .btn:active { transform: scale(0.97); }
+    .btn--primary { background: var(--btn-bg); color: var(--btn-fg); box-shadow: 0 4px 16px rgba(23,15,76,0.2); }
+    .btn--primary:hover { box-shadow: 0 6px 24px rgba(23,15,76,0.3); transform: translateY(-1px); }
     .btn--main { background: var(--main-fg); color: var(--main-bg); }
-    .btn--main:hover { background: rgba(240, 241, 255, 0.88); }
-    .btn--secondary { background: var(--light-secondary-fg); color: var(--light-secondary-bg); }
-    .btn--secondary:hover { background: rgba(23, 15, 76, 0.88); }
+    .btn--secondary { background: var(--sec-fg); color: var(--sec-bg); box-shadow: 0 4px 16px rgba(23,15,76,0.15); }
 
-    .header { background: var(--background); padding: 24px 0; }
-    .header__inner { display: flex; align-items: center; justify-content: space-between; }
-    .header__logo { font-family: var(--font-default); font-weight: 600; font-size: 2.1rem; color: var(--foreground); line-height: 1; }
-    .header__nav { display: flex; gap: 0; align-items: center; }
-    .header__nav a { padding: 12px 24px; font-size: 1rem; color: var(--foreground); transition: opacity 0.15s; }
-    .header__nav a:hover { opacity: 0.7; }
-    .mobile-menu-btn { display: none; background: none; border: none; cursor: pointer; padding: 8px; }
-    .mobile-menu-btn svg { width: 28px; height: 28px; fill: var(--foreground); }
-    .mobile-nav { display: none; }
+    /* ===== STICKY HEADER ===== */
+    .header {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 500;
+      height: var(--header-h);
+      background: rgba(255,255,255,0.92);
+      backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(23,15,76,0.06);
+      transition: box-shadow 0.3s, background 0.3s;
+    }
+    .header.scrolled {
+      box-shadow: 0 2px 20px rgba(23,15,76,0.08);
+      background: rgba(255,255,255,0.97);
+    }
+    .header__inner {
+      max-width: 1200px; margin: 0 auto; padding: 0 24px;
+      display: flex; align-items: center; justify-content: space-between;
+      height: 100%;
+    }
+    .header__logo {
+      font-family: var(--font-h); font-weight: 700;
+      font-size: 1.75rem; color: var(--fg); line-height: 1;
+    }
+    /* Desktop nav */
+    .nav { display: flex; align-items: center; gap: 4px; }
+    .nav a {
+      padding: 8px 18px; font-size: 0.95rem; font-weight: 600;
+      color: var(--fg); border-radius: 6px;
+      transition: background 0.2s, color 0.2s;
+      position: relative;
+    }
+    .nav a:hover { background: rgba(23,15,76,0.06); }
+    .nav a.active { color: rgba(86, 90, 221, 1); }
+    .nav a.active::after {
+      content: ''; position: absolute; bottom: 2px; left: 18px; right: 18px;
+      height: 2px; background: rgba(86, 90, 221, 1); border-radius: 1px;
+    }
+    .nav .btn { margin-left: 12px; padding: 10px 22px; font-size: 0.9rem; }
+
+    /* Hamburger */
+    .hamburger {
+      display: none; background: none; border: none; cursor: pointer;
+      width: 44px; height: 44px; position: relative; z-index: 600;
+    }
+    .hamburger span {
+      display: block; width: 24px; height: 2px; background: var(--fg);
+      border-radius: 2px; position: absolute; left: 10px;
+      transition: all 0.3s ease;
+    }
+    .hamburger span:nth-child(1) { top: 14px; }
+    .hamburger span:nth-child(2) { top: 21px; }
+    .hamburger span:nth-child(3) { top: 28px; }
+    .hamburger.open span:nth-child(1) { top: 21px; transform: rotate(45deg); }
+    .hamburger.open span:nth-child(2) { opacity: 0; }
+    .hamburger.open span:nth-child(3) { top: 21px; transform: rotate(-45deg); }
+
+    /* Mobile drawer */
+    .mobile-drawer {
+      position: fixed; top: 0; right: 0; bottom: 0;
+      width: 300px; max-width: 85vw;
+      background: var(--bg); z-index: 550;
+      transform: translateX(100%);
+      transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+      box-shadow: -8px 0 40px rgba(23,15,76,0.15);
+      padding: calc(var(--header-h) + 20px) 28px 28px;
+      display: flex; flex-direction: column; gap: 4px;
+    }
+    .mobile-drawer.open { transform: translateX(0); }
+    .mobile-drawer a {
+      padding: 14px 16px; font-size: 1.05rem; font-weight: 600;
+      color: var(--fg); border-radius: var(--r);
+      transition: background 0.15s;
+    }
+    .mobile-drawer a:hover { background: rgba(23,15,76,0.05); }
+    .mobile-drawer a.active { color: rgba(86, 90, 221, 1); background: rgba(86,90,221,0.06); }
+    .mobile-drawer .btn { margin-top: 12px; text-align: center; justify-content: center; }
+    .drawer-overlay {
+      position: fixed; inset: 0; background: rgba(23,15,76,0.3);
+      z-index: 540; opacity: 0; pointer-events: none;
+      transition: opacity 0.3s;
+    }
+    .drawer-overlay.open { opacity: 1; pointer-events: auto; }
+
     @media (max-width: 768px) {
-      .header__nav { display: none; }
-      .mobile-menu-btn { display: block; }
-      .header__logo { font-size: 1.25rem; }
-      .mobile-nav.active { display: flex; flex-direction: column; background: var(--background); padding: 16px 24px; border-top: 1px solid rgba(0,0,0,0.08); }
-      .mobile-nav a { padding: 12px 0; font-size: 1rem; color: var(--foreground); border-bottom: 1px solid rgba(0,0,0,0.06); }
+      .nav { display: none; }
+      .hamburger { display: block; }
+      .header__logo { font-size: 1.35rem; }
     }
 
-    .section { padding: 32px 0; }
-    .section--lg { padding: 64px 0; }
-    @media (min-width: 1024px) { .section--lg { padding: 80px 0; } }
-    .bg-light { background: var(--background); color: var(--foreground); }
+    /* Spacer for fixed header */
+    .header-spacer { height: var(--header-h); }
+
+    /* ===== SECTIONS ===== */
+    .section { padding: 48px 0; }
+    .section--lg { padding: 72px 0; }
+    @media (min-width: 1024px) { .section--lg { padding: 100px 0; } }
+    .bg-light { background: var(--bg); color: var(--fg); }
     .bg-main { background: var(--main-bg); color: var(--main-fg); }
     .bg-promo { background: var(--promo-bg); color: var(--promo-fg); }
-    .bg-light-secondary { background: var(--light-secondary-bg); color: var(--light-secondary-fg); }
+    .bg-sec { background: var(--sec-bg); color: var(--sec-fg); }
 
-    .hero__trust { font-size: 1rem; margin-bottom: 16px; }
-    .hero h1 { margin-bottom: 20px; }
-    .hero__sub { font-size: 1.25rem; margin-bottom: 32px; }
-    .hero__cta { margin-bottom: 40px; }
-    .hero__image { margin: 0 auto; max-width: 1023px; }
-    .hero__image img { width: 100%; border-radius: var(--radius-img); box-shadow: 0 4px 24px rgba(23, 15, 76, 0.10); }
+    /* ===== SCROLL REVEAL ===== */
+    .reveal {
+      opacity: 0; transform: translateY(32px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+    .reveal-left {
+      opacity: 0; transform: translateX(-40px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+    .reveal-left.visible { opacity: 1; transform: translateX(0); }
+    .reveal-right {
+      opacity: 0; transform: translateX(40px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+    .reveal-right.visible { opacity: 1; transform: translateX(0); }
 
+    /* ===== HERO ===== */
+    .hero { padding-top: 60px; padding-bottom: 20px; }
+    .hero__badge {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: var(--promo-bg); color: var(--promo-fg);
+      padding: 8px 20px; border-radius: 100px; font-size: 0.85rem;
+      font-weight: 600; margin-bottom: 24px;
+    }
+    .hero__badge span { display: inline-block; }
+    .hero h1 { margin-bottom: 20px; max-width: 720px; margin-left: auto; margin-right: auto; }
+    .hero__sub { font-size: 1.2rem; margin-bottom: 36px; color: rgba(23,15,76,0.7); max-width: 600px; margin-left: auto; margin-right: auto; }
+    .hero__trust {
+      display: flex; flex-wrap: wrap; justify-content: center; gap: 16px 28px;
+      margin-top: 32px; font-size: 0.9rem; color: rgba(23,15,76,0.55); font-weight: 500;
+    }
+    .hero__trust span { display: flex; align-items: center; gap: 6px; }
+    .hero__trust .check { color: #22c55e; font-weight: 700; }
+    .hero__image {
+      margin: 48px auto 0; max-width: 1023px;
+    }
+    .hero__image img {
+      width: 100%; border-radius: 12px;
+      box-shadow: 0 8px 40px rgba(23, 15, 76, 0.12);
+    }
+
+    /* ===== PROBLEM ===== */
     .problem p { margin-bottom: 16px; }
-    .solution p { margin-bottom: 8px; }
+    .problem em { font-style: italic; }
 
-    .pricing__features { margin: 24px 0; }
-    .pricing__features p { margin-bottom: 8px; }
-    .video-wrapper { position: relative; width: 100%; max-width: 1200px; margin: 40px auto 0; aspect-ratio: 16/9; background: #000; border-radius: var(--radius-img); overflow: hidden; }
+    /* ===== SOLUTION ===== */
+    .solution-grid {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 24px; margin-top: 40px;
+    }
+    .solution-card {
+      background: var(--bg); border: 1px solid rgba(23,15,76,0.08);
+      border-radius: 12px; padding: 28px;
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+    }
+    .solution-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 32px rgba(23,15,76,0.1);
+    }
+    .solution-card__icon {
+      width: 48px; height: 48px; border-radius: 12px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.4rem; margin-bottom: 16px;
+    }
+    .solution-card__icon--blue { background: rgba(59,130,246,0.12); }
+    .solution-card__icon--green { background: rgba(34,197,94,0.12); }
+    .solution-card__icon--purple { background: rgba(139,92,246,0.12); }
+    .solution-card__icon--orange { background: rgba(249,115,22,0.12); }
+    .solution-card h3 { font-size: 1.15rem; margin-bottom: 8px; }
+    .solution-card p { font-size: 1rem; color: rgba(23,15,76,0.65); line-height: 1.6; }
+    @media (max-width: 600px) { .solution-grid { grid-template-columns: 1fr; } }
+
+    /* ===== PRICING / VIDEO ===== */
+    .pricing-features {
+      display: flex; flex-wrap: wrap; justify-content: center;
+      gap: 12px 32px; margin: 28px 0 0;
+    }
+    .pricing-features span {
+      display: flex; align-items: center; gap: 8px;
+      font-size: 1.05rem; font-weight: 500;
+    }
+    .pricing-features .num {
+      width: 28px; height: 28px; border-radius: 50%;
+      background: rgba(240,241,255,0.2); display: flex;
+      align-items: center; justify-content: center;
+      font-size: 0.85rem; font-weight: 700; flex-shrink: 0;
+    }
+    .video-wrapper {
+      position: relative; width: 100%; max-width: 960px;
+      margin: 48px auto 0; aspect-ratio: 16/9;
+      background: #0a0a1a; border-radius: 12px; overflow: hidden;
+      box-shadow: 0 12px 48px rgba(0,0,0,0.3);
+    }
     .video-wrapper video { width: 100%; height: 100%; object-fit: contain; }
 
-    .guarantee p { margin-bottom: 12px; }
-    .guarantee__cta { text-align: center; margin-top: 32px; }
+    /* ===== GUARANTEE ===== */
+    .guarantee-box {
+      background: var(--bg); border-radius: 16px; padding: 48px 40px;
+      max-width: 720px; margin: 0 auto;
+      box-shadow: 0 4px 24px rgba(23,15,76,0.06);
+      border: 1px solid rgba(23,15,76,0.06);
+    }
+    .guarantee-box h2 { margin-bottom: 16px; }
+    .guarantee-box p { margin-bottom: 12px; color: rgba(23,15,76,0.7); }
+    .guarantee-box .btn { margin-top: 24px; }
+    @media (max-width: 600px) { .guarantee-box { padding: 32px 24px; } }
 
-    .split { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center; }
+    /* ===== SPLIT LAYOUT ===== */
+    .split { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: center; }
     .split--reversed { direction: rtl; }
     .split--reversed > * { direction: ltr; }
-    .split__image img { width: 100%; border-radius: var(--radius-img); }
-    .split__image--circle img { border-radius: 50%; }
+    .split__image img { width: 100%; border-radius: 12px; box-shadow: 0 8px 32px rgba(23,15,76,0.08); }
+    .split__image--circle img { border-radius: 50%; box-shadow: 0 8px 32px rgba(23,15,76,0.1); }
     .split__text h2 { margin-bottom: 16px; }
-    .split__text p { margin-bottom: 12px; }
+    .split__text p { margin-bottom: 12px; color: rgba(23,15,76,0.7); }
     @media (max-width: 768px) {
-      .split, .split--reversed { grid-template-columns: 1fr; gap: 24px; direction: ltr; }
+      .split, .split--reversed { grid-template-columns: 1fr; gap: 32px; direction: ltr; }
     }
 
-    .whats-inside__image { margin: 32px auto 0; max-width: 97%; }
-
-    .features-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; max-width: 920px; margin: 0 auto; }
-    .features-grid__item h2 { font-size: 1.25rem; }
-    @media (min-width: 1024px) { .features-grid__item h2 { font-size: 1.5rem; } }
-    @media (max-width: 600px) { .features-grid { grid-template-columns: 1fr; } }
-
-    .testimonials-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
-    .testimonial-card { background: var(--promo-bg); border-radius: var(--radius-form); padding: 32px; display: flex; flex-direction: column; gap: 16px; }
-    .testimonial-card__quote-icon { width: 32px; height: 32px; fill: var(--promo-fg); flex-shrink: 0; }
-    .testimonial-card__text { font-size: 1.125rem; line-height: 1.6; }
-    .testimonial-card__author { font-size: 1.125rem; }
-    @media (max-width: 768px) { .testimonials-grid { grid-template-columns: 1fr; } }
-
-    .faq-item { border-top: 1px solid rgba(23, 15, 76, 0.38); }
-    .faq-item:last-child { border-bottom: 1px solid rgba(23, 15, 76, 0.38); }
-    .faq-question { display: flex; justify-content: space-between; align-items: center; width: 100%; padding: 16px 0; background: none; border: none; cursor: pointer; text-align: left; font-family: var(--font-secondary); font-weight: 700; font-size: 1.125rem; color: var(--foreground); gap: 12px; }
-    .faq-question svg { flex-shrink: 0; width: 20px; height: 20px; stroke: var(--foreground); transition: transform 0.3s; }
-    .faq-question.active svg { transform: rotate(180deg); }
-    .faq-answer { max-height: 0; overflow: hidden; transition: max-height 0.3s ease; }
-    .faq-answer__inner { padding-bottom: 24px; }
-
-    .subscribe { max-width: 920px; margin: 0 auto; text-align: center; }
-    .subscribe h2 { margin-bottom: 32px; }
-    .subscribe-form { display: flex; gap: 16px; justify-content: center; align-items: flex-start; flex-wrap: wrap; }
-    .subscribe-form input[type="email"] { height: 48px; padding: 12px 16px; font-family: var(--font-secondary); font-size: 1rem; border: 1px solid rgba(240, 241, 255, 0.45); border-radius: var(--radius-form); background: transparent; color: var(--main-fg); outline: none; min-width: 280px; transition: border-color 0.15s; }
-    .subscribe-form input[type="email"]::placeholder { color: rgba(240, 241, 255, 0.6); }
-    .subscribe-form input[type="email"]:focus { border-color: var(--main-fg); }
-    .subscribe-form .btn { padding: 12px 24px; }
-
-    .footer { background: var(--background); padding: 16px 0 24px; }
-    .footer__inner { display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; gap: 16px; }
-    .footer__copy { font-size: 0.875rem; color: var(--foreground); }
-    .footer__social { display: flex; gap: 16px; justify-content: center; }
-    .footer__social a { display: flex; align-items: center; justify-content: center; width: 24px; height: 24px; transition: opacity 0.15s; }
-    .footer__social a:hover { opacity: 0.6; }
-    .footer__social svg { width: 24px; height: 24px; }
-    @media (max-width: 768px) {
-      .footer__inner { grid-template-columns: 1fr; text-align: center; gap: 12px; }
-      .footer__copy { order: 3; }
-      .footer__social { order: 1; }
+    /* ===== WHAT'S INSIDE ===== */
+    .inside-img {
+      margin: 40px auto 0; max-width: 95%;
     }
-
-    .scroll-top { position: fixed; right: 32px; bottom: 20px; width: 48px; height: 48px; border-radius: 50%; background: var(--background); border: none; cursor: pointer; display: flex; align-items: center; justify-content: center; box-shadow: 0 2px 8px rgba(0,0,0,0.12); opacity: 0; visibility: hidden; transition: opacity 0.3s, visibility 0.3s; z-index: 100; }
-    .scroll-top.visible { opacity: 1; visibility: visible; }
-    .scroll-top svg { width: 24px; height: 24px; fill: var(--foreground); }
-
-    /* ===== MODAL OVERLAY ===== */
-    .modal-overlay {
-      display: none;
-      position: fixed;
-      top: 0; left: 0; right: 0; bottom: 0;
-      background: rgba(23, 15, 76, 0.6);
-      backdrop-filter: blur(4px);
-      -webkit-backdrop-filter: blur(4px);
-      z-index: 1000;
-      align-items: center;
-      justify-content: center;
-      padding: 24px;
-    }
-    .modal-overlay.active {
-      display: flex;
-    }
-    .modal-box {
-      background: #fff;
+    .inside-img img {
       border-radius: 12px;
-      max-width: 440px;
-      width: 100%;
-      padding: 40px 32px;
-      position: relative;
-      box-shadow: 0 24px 64px rgba(23, 15, 76, 0.25);
-      animation: modalIn 0.25s ease-out;
+      box-shadow: 0 8px 32px rgba(23,15,76,0.06);
+    }
+
+    /* ===== FEATURES ===== */
+    .feature-row {
+      display: grid; grid-template-columns: 1fr 1fr 1fr;
+      gap: 24px; max-width: 920px; margin: 40px auto 0;
+    }
+    .feature-card {
+      background: var(--bg); border-radius: 12px; padding: 28px;
+      border: 1px solid rgba(68,71,124,0.12);
+      transition: transform 0.25s, box-shadow 0.25s;
+    }
+    .feature-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 24px rgba(68,71,124,0.1);
+    }
+    .feature-card .num {
+      font-family: var(--font-h); font-weight: 700; font-size: 2rem;
+      color: rgba(86,90,221,0.3); margin-bottom: 8px;
+    }
+    .feature-card h3 { font-size: 1.1rem; margin-bottom: 8px; }
+    .feature-card p { font-size: 0.95rem; color: rgba(68,71,124,0.7); line-height: 1.6; }
+    @media (max-width: 700px) { .feature-row { grid-template-columns: 1fr; } }
+
+    /* ===== TESTIMONIALS ===== */
+    .test-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+    .test-card {
+      background: var(--promo-bg); border-radius: 12px; padding: 32px;
+      display: flex; flex-direction: column; gap: 16px;
+      border: 1px solid rgba(68,71,124,0.06);
+      transition: transform 0.25s; position: relative;
+    }
+    .test-card:hover { transform: translateY(-3px); }
+    .test-card__quote {
+      font-size: 3rem; font-family: Georgia, serif;
+      color: rgba(68,71,124,0.15); line-height: 1; position: absolute;
+      top: 16px; left: 24px;
+    }
+    .test-card__text { font-size: 1.05rem; line-height: 1.7; padding-top: 12px; }
+    .test-card__author { font-size: 1rem; }
+    .test-card__author strong { font-weight: 700; }
+    @media (max-width: 768px) { .test-grid { grid-template-columns: 1fr; } }
+
+    /* ===== FAQ ===== */
+    .faq-item { border-bottom: 1px solid rgba(23, 15, 76, 0.1); }
+    .faq-item:first-child { border-top: 1px solid rgba(23, 15, 76, 0.1); }
+    .faq-q {
+      display: flex; justify-content: space-between; align-items: center;
+      width: 100%; padding: 20px 0; background: none; border: none;
+      cursor: pointer; text-align: left; font-family: var(--font-b);
+      font-weight: 700; font-size: 1.1rem; color: var(--fg); gap: 16px;
+      transition: color 0.2s;
+    }
+    .faq-q:hover { color: rgba(86,90,221,1); }
+    .faq-q svg {
+      flex-shrink: 0; width: 22px; height: 22px; stroke: currentColor;
+      transition: transform 0.3s;
+    }
+    .faq-q.active svg { transform: rotate(180deg); }
+    .faq-a { max-height: 0; overflow: hidden; transition: max-height 0.35s ease; }
+    .faq-a__inner { padding: 0 0 20px; }
+    .faq-a__inner p { color: rgba(23,15,76,0.7); }
+
+    /* ===== FOOTER ===== */
+    .footer { background: var(--bg); padding: 20px 0 28px; border-top: 1px solid rgba(23,15,76,0.06); }
+    .footer__inner {
+      display: flex; align-items: center; justify-content: space-between;
+      flex-wrap: wrap; gap: 16px;
+    }
+    .footer__copy { font-size: 0.85rem; color: rgba(23,15,76,0.5); }
+    .footer__social { display: flex; gap: 16px; }
+    .footer__social a {
+      display: flex; align-items: center; justify-content: center;
+      width: 36px; height: 36px; border-radius: 8px;
+      transition: background 0.15s;
+    }
+    .footer__social a:hover { background: rgba(23,15,76,0.05); }
+    .footer__social svg { width: 20px; height: 20px; }
+    @media (max-width: 600px) {
+      .footer__inner { flex-direction: column; text-align: center; }
+    }
+
+    /* ===== SCROLL TO TOP ===== */
+    .scroll-top {
+      position: fixed; right: 24px; bottom: 24px; width: 48px; height: 48px;
+      border-radius: 50%; background: var(--fg); border: none; cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+      box-shadow: 0 4px 16px rgba(23,15,76,0.25);
+      opacity: 0; visibility: hidden; transition: all 0.3s; z-index: 100;
+      transform: translateY(12px);
+    }
+    .scroll-top.visible { opacity: 1; visibility: visible; transform: translateY(0); }
+    .scroll-top:hover { transform: translateY(-2px); box-shadow: 0 6px 24px rgba(23,15,76,0.35); }
+    .scroll-top svg { width: 20px; height: 20px; fill: #fff; }
+
+    /* ===== MODAL ===== */
+    .modal-overlay {
+      display: none; position: fixed; inset: 0;
+      background: rgba(23,15,76,0.55); backdrop-filter: blur(6px);
+      -webkit-backdrop-filter: blur(6px); z-index: 1000;
+      align-items: center; justify-content: center; padding: 24px;
+    }
+    .modal-overlay.active { display: flex; }
+    .modal-box {
+      background: #fff; border-radius: 16px; max-width: 440px; width: 100%;
+      padding: 44px 36px; position: relative;
+      box-shadow: 0 24px 64px rgba(23,15,76,0.2);
+      animation: modalIn 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
     }
     @keyframes modalIn {
-      from { opacity: 0; transform: translateY(20px) scale(0.97); }
-      to { opacity: 1; transform: translateY(0) scale(1); }
+      from { opacity: 0; transform: scale(0.9) translateY(20px); }
+      to { opacity: 1; transform: scale(1) translateY(0); }
     }
     .modal-close {
-      position: absolute;
-      top: 12px; right: 12px;
-      width: 36px; height: 36px;
-      background: none;
-      border: none;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      border-radius: 50%;
-      transition: background 0.15s;
+      position: absolute; top: 14px; right: 14px; width: 36px; height: 36px;
+      background: none; border: none; cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+      border-radius: 50%; transition: background 0.15s;
     }
     .modal-close:hover { background: rgba(0,0,0,0.06); }
-    .modal-close svg { width: 20px; height: 20px; fill: #333; }
-    .modal-box h3 {
-      font-family: var(--font-default);
-      font-weight: 600;
-      font-size: 1.5rem;
-      color: var(--foreground);
-      margin-bottom: 8px;
-      text-align: center;
-    }
+    .modal-close svg { width: 18px; height: 18px; fill: #888; }
+    .modal-box h3 { text-align: center; margin-bottom: 8px; }
     .modal-box .modal-sub {
-      font-family: var(--font-secondary);
-      font-size: 0.95rem;
-      color: #555;
-      text-align: center;
-      margin-bottom: 24px;
-      line-height: 1.5;
+      font-size: 0.95rem; color: rgba(23,15,76,0.6); text-align: center;
+      margin-bottom: 28px; line-height: 1.5;
     }
-    .modal-form { display: flex; flex-direction: column; gap: 12px; }
+    .modal-form { display: flex; flex-direction: column; gap: 14px; }
     .modal-form input {
-      height: 48px;
-      padding: 12px 14px;
-      font-family: var(--font-secondary);
-      font-size: 1rem;
-      border: 1px solid #ccc;
-      border-radius: var(--radius-form);
-      background: #fff;
-      color: #333;
-      outline: none;
-      width: 100%;
-      transition: border-color 0.15s;
+      height: 50px; padding: 14px 16px; font-family: var(--font-b);
+      font-size: 1rem; border: 1.5px solid rgba(23,15,76,0.15);
+      border-radius: var(--r); background: #fff; color: var(--fg);
+      outline: none; width: 100%; transition: border-color 0.2s, box-shadow 0.2s;
     }
-    .modal-form input:focus { border-color: var(--foreground); }
-    .modal-form input::placeholder { color: #999; }
+    .modal-form input:focus { border-color: rgba(86,90,221,0.6); box-shadow: 0 0 0 3px rgba(86,90,221,0.1); }
+    .modal-form input::placeholder { color: rgba(23,15,76,0.35); }
     .modal-form button[type="submit"] {
-      height: 48px;
-      padding: 12px 24px;
-      font-family: var(--font-secondary);
-      font-weight: 700;
-      font-size: 1rem;
-      background: var(--btn-bg);
-      color: var(--btn-fg);
-      border: none;
-      border-radius: var(--radius-btn);
-      cursor: pointer;
-      transition: background 0.15s;
-      width: 100%;
+      height: 50px; font-weight: 700; font-size: 1rem;
+      background: var(--btn-bg); color: var(--btn-fg);
+      border: none; border-radius: var(--r); cursor: pointer;
+      transition: background 0.15s, transform 0.1s; width: 100%;
     }
-    .modal-form button[type="submit"]:hover { background: rgba(23, 15, 76, 0.88); }
-    .modal-form button[type="submit"]:disabled {
-      opacity: 0.6;
-      cursor: not-allowed;
+    .modal-form button[type="submit"]:hover { background: rgba(23,15,76,0.88); }
+    .modal-form button:disabled { opacity: 0.6; cursor: not-allowed; }
+    .modal-form .note { font-size: 0.8rem; color: rgba(23,15,76,0.4); text-align: center; margin-top: 2px; }
+    .modal-success { display: none; text-align: center; padding: 20px 0; }
+    .modal-success p { font-size: 1rem; color: rgba(23,15,76,0.6); margin-bottom: 16px; }
+    .modal-success .redirect-link { color: var(--fg); text-decoration: underline; }
+
+    /* ===== CTA BANNER ===== */
+    .cta-banner {
+      background: linear-gradient(135deg, rgba(86,90,221,1) 0%, rgba(68,71,124,1) 100%);
+      border-radius: 16px; padding: 48px 40px; text-align: center;
+      color: #fff; max-width: 800px; margin: 0 auto;
     }
-    .modal-form .form-note {
-      font-size: 0.8rem;
-      color: #888;
-      text-align: center;
-      margin-top: 4px;
-    }
-    .modal-success {
-      display: none;
-      text-align: center;
-      padding: 20px 0;
-    }
-    .modal-success h3 {
-      font-family: var(--font-default);
-      font-weight: 600;
-      font-size: 1.5rem;
-      color: var(--foreground);
-      margin-bottom: 12px;
-    }
-    .modal-success p {
-      font-size: 1rem;
-      color: #555;
-      margin-bottom: 20px;
-    }
-    .modal-success .redirect-note {
-      font-size: 0.85rem;
-      color: #888;
-    }
+    .cta-banner h2 { color: #fff; margin-bottom: 12px; }
+    .cta-banner p { color: rgba(255,255,255,0.8); margin-bottom: 28px; }
+    .cta-banner .btn { background: #fff; color: var(--fg); font-weight: 700; }
+    .cta-banner .btn:hover { background: rgba(255,255,255,0.92); }
+    @media (max-width: 600px) { .cta-banner { padding: 36px 24px; } }
   </style>
 </head>
 <body>
 
-<!-- ===== MAILERLITE MODAL ===== -->
+<!-- ===== MODAL ===== -->
 <div class="modal-overlay" id="mlModal">
   <div class="modal-box">
     <button class="modal-close" id="mlModalClose" aria-label="Close">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960"><path d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z"/></svg>
     </button>
-
-    <!-- Form view -->
     <div id="mlFormView">
       <h3>Start 50 Free Questions</h3>
-      <p class="modal-sub">Enter your name and email to get instant access to 50 free practice questions.</p>
+      <p class="modal-sub">Enter your info below for instant access to 50 free practice questions.</p>
       <form class="modal-form" id="mlCaptureForm" action="https://assets.mailerlite.com/jsonp/2167337/forms/181219082046014470/subscribe" method="post">
-        <input type="text" name="fields[name]" placeholder="Name" autocomplete="given-name" required>
-        <input type="email" name="fields[email]" placeholder="Email" autocomplete="email" required>
+        <input type="text" name="fields[name]" placeholder="Your name" autocomplete="given-name" required>
+        <input type="email" name="fields[email]" placeholder="Your email" autocomplete="email" required>
         <input type="hidden" name="ml-submit" value="1">
         <input type="hidden" name="anticsrf" value="true">
         <button type="submit" id="mlSubmitBtn">Get Free Access →</button>
-        <p class="form-note">No credit card required. Unsubscribe anytime.</p>
+        <p class="note">No credit card required. Unsubscribe anytime.</p>
       </form>
     </div>
-
-    <!-- Success view -->
     <div class="modal-success" id="mlSuccessView">
       <h3>You're in! 🎉</h3>
       <p>Check your email for a welcome message. Redirecting you to the question bank now...</p>
-      <p class="redirect-note">Not redirecting? <a href="https://clinical-research-qbank.base44.app" style="color: var(--foreground); text-decoration: underline;">Click here</a></p>
+      <p><a href="https://clinical-research-qbank.base44.app" class="redirect-link">Not redirecting? Click here →</a></p>
     </div>
   </div>
 </div>
 
 <!-- ===== HEADER ===== -->
-<header class="header">
-  <div class="container">
-    <div class="header__inner">
-      <a href="https://clinicalresearchquestionbank.com/" class="header__logo">CR Qbank</a>
-      <nav class="header__nav">
-        <a href="#about">About</a>
-        <a href="#how">How it works</a>
-        <a href="#get-started">Get Started</a>
-        <a href="#faq">FAQ</a>
-      </nav>
-      <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Toggle menu">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960"><path d="M120-240v-80h720v80H120Zm0-200v-80h720v80H120Zm0-200v-80h720v80H120Z"/></svg>
-      </button>
-    </div>
-    <nav class="mobile-nav" id="mobileNav">
+<header class="header" id="header">
+  <div class="header__inner">
+    <a href="#" class="header__logo">CR Qbank</a>
+    <nav class="nav" id="desktopNav">
       <a href="#about">About</a>
       <a href="#how">How it works</a>
-      <a href="#get-started">Get Started</a>
+      <a href="#features">Features</a>
       <a href="#faq">FAQ</a>
+      <button class="btn btn--primary open-ml-modal">Try Free</button>
     </nav>
+    <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </button>
   </div>
 </header>
+<div class="drawer-overlay" id="drawerOverlay"></div>
+<nav class="mobile-drawer" id="mobileDrawer">
+  <a href="#about">About</a>
+  <a href="#how">How it works</a>
+  <a href="#features">Features</a>
+  <a href="#faq">FAQ</a>
+  <button class="btn btn--primary open-ml-modal">Try 50 Free Questions</button>
+</nav>
+<div class="header-spacer"></div>
 
 <!-- ===== HERO ===== -->
-<section class="section bg-light hero">
-  <div class="container--narrow text-center">
-    <p class="hero__trust">✓ 50 free questions, no credit card required · ✓ Works on any device · ✓ Built by an ACRP-CP certified CRC</p>
-    <h1>Pass Your ACRP or SOCRA Exam on the First Try</h1>
-    <p class="hero__sub">800+ practice questions. Detailed explanations. Try 50 free — no credit card required.</p>
-    <div class="hero__cta">
-      <button class="btn btn--primary open-ml-modal">Start 50 Free Questions</button>
+<section class="section bg-light hero" id="hero">
+  <div class="narrow tc">
+    <div class="reveal">
+      <div class="hero__badge"><span>✨</span> Built by an ACRP-CP certified CRC</div>
+    </div>
+    <h1 class="reveal" style="transition-delay:0.1s">Pass Your ACRP or SOCRA Exam on the First Try</h1>
+    <p class="hero__sub reveal" style="transition-delay:0.2s">800+ scenario-based practice questions with detailed explanations. Try 50 free — no credit card required.</p>
+    <div class="reveal" style="transition-delay:0.3s">
+      <button class="btn btn--primary open-ml-modal">Start 50 Free Questions →</button>
+    </div>
+    <div class="hero__trust reveal" style="transition-delay:0.4s">
+      <span><span class="check">✓</span> 50 free questions</span>
+      <span><span class="check">✓</span> Works on any device</span>
+      <span><span class="check">✓</span> No credit card required</span>
     </div>
   </div>
-</section>
-
-<!-- ===== HERO IMAGE ===== -->
-<section class="bg-light" style="padding: 16px 0 40px;">
   <div class="container">
-    <div class="hero__image">
-      <img src="img-dashboard.png" alt="Clinical Research Question Bank Dashboard showing study mode, practice tests, progress tracking, and study categories">
+    <div class="hero__image reveal" style="transition-delay:0.5s">
+      <img src="img-dashboard.png" alt="Clinical Research Question Bank Dashboard">
     </div>
   </div>
 </section>
 
-<!-- ===== THE PROBLEM ===== -->
+<!-- ===== PROBLEM ===== -->
 <section class="section section--lg bg-main problem">
-  <div class="container--narrow">
-    <h2 class="text-center" style="margin-bottom: 24px;">The Problem</h2>
-    <p>You've been studying for weeks. You still don't know if you're ready. The exam is in 30 days.</p>
-    <p>PDFs don't simulate time pressure. Flashcards don't teach you <em>why</em>. Bootcamps cost $700+ and leave you more confused.</p>
-    <p style="margin-top: 16px;">You need practice that feels like the real exam — so you walk in confident.</p>
+  <div class="narrow">
+    <h2 class="tc reveal" style="margin-bottom: 28px;">The Problem</h2>
+    <div class="reveal" style="transition-delay:0.1s">
+      <p>You've been studying for weeks. You still don't know if you're ready. The exam is in 30 days.</p>
+      <p>PDFs don't simulate time pressure. Flashcards don't teach you <em>why</em>. Bootcamps cost $700+ and leave you more confused.</p>
+      <p style="margin-top: 16px; font-weight: 600;">You need practice that feels like the real exam — so you walk in confident.</p>
+    </div>
   </div>
 </section>
 
-<!-- ===== THE SOLUTION ===== -->
-<section class="section section--lg bg-light solution">
-  <div class="container--narrow">
-    <h2 class="text-center" style="margin-bottom: 24px;">The Solution (What You Get)</h2>
-    <p><strong>800+ Scenario-Based Questions</strong> Not memorization. Real clinical situations you'll see on the exam.</p><br>
-    <p><strong>Instant Explanations</strong> Every answer tells you <em>why</em> — so you understand the concept, not just the letter.</p><br>
-    <p><strong>Timed Exam Mode</strong> Practice under pressure. Know exactly what test day feels like.</p><br>
-    <p><strong>Progress Tracking</strong> See which domains need work. Stop guessing if you're ready.</p>
-  </div>
-</section>
-
-<!-- ===== TRY FREE CTA ===== -->
-<section class="section bg-promo">
-  <div class="container--narrow text-center">
-    <h2><strong>Try 50 Questions Free.</strong> No credit card. Just click and start.</h2>
+<!-- ===== SOLUTION ===== -->
+<section class="section section--lg bg-light" id="features">
+  <div class="narrow">
+    <h2 class="tc reveal">The Solution (What You Get)</h2>
+    <div class="solution-grid">
+      <div class="solution-card reveal" style="transition-delay:0.1s">
+        <div class="solution-card__icon solution-card__icon--blue">🧠</div>
+        <h3>800+ Scenario-Based Questions</h3>
+        <p>Not memorization. Real clinical situations you'll see on the exam.</p>
+      </div>
+      <div class="solution-card reveal" style="transition-delay:0.2s">
+        <div class="solution-card__icon solution-card__icon--green">💡</div>
+        <h3>Instant Explanations</h3>
+        <p>Every answer tells you <em>why</em> — so you understand the concept, not just the letter.</p>
+      </div>
+      <div class="solution-card reveal" style="transition-delay:0.3s">
+        <div class="solution-card__icon solution-card__icon--purple">⏱️</div>
+        <h3>Timed Exam Mode</h3>
+        <p>Practice under pressure. Know exactly what test day feels like.</p>
+      </div>
+      <div class="solution-card reveal" style="transition-delay:0.4s">
+        <div class="solution-card__icon solution-card__icon--orange">📊</div>
+        <h3>Progress Tracking</h3>
+        <p>See which domains need work. Stop guessing if you're ready.</p>
+      </div>
+    </div>
   </div>
 </section>
 
 <!-- ===== PRICING + VIDEO ===== -->
 <section id="how" class="section section--lg bg-main">
-  <div class="container text-center">
-    <h2 style="margin-bottom: 8px;"><strong>Unlock Everything: $197</strong> One payment. Lifetime access. All 800+ questions.</h2>
-    <div class="pricing__features" style="margin-top: 24px;">
-      <p>1️⃣ Full question bank (ACRP + SOCRA coverage)</p><br>
-      <p>2️⃣ Detailed explanations for every question</p>
-      <p>3️⃣ Timed practice exams</p><br>
-      <p>4️⃣ Progress tracking dashboard</p>
+  <div class="container tc">
+    <h2 class="reveal">Unlock Everything: $197</h2>
+    <p class="reveal" style="transition-delay:0.1s; font-size: 1.15rem; margin-top: 8px; opacity: 0.85;">One payment. Lifetime access. All 800+ questions.</p>
+    <div class="pricing-features reveal" style="transition-delay:0.2s">
+      <span><span class="num">1</span> Full question bank (ACRP + SOCRA)</span>
+      <span><span class="num">2</span> Detailed explanations</span>
+      <span><span class="num">3</span> Timed practice exams</span>
+      <span><span class="num">4</span> Progress dashboard</span>
     </div>
-    <div class="video-wrapper">
+    <div class="video-wrapper reveal" style="transition-delay:0.3s">
       <video muted autoplay controls>
-        <source src="https://clinicalresearchquestionbank.com/media/clinical-research-question-bank-app-demo.mp4" type="video/mp4">
+        <source src="demo.mp4" type="video/mp4">
       </video>
     </div>
   </div>
 </section>
 
 <!-- ===== GUARANTEE ===== -->
-<section class="section section--lg bg-light-secondary guarantee">
-  <div class="container--narrow">
-    <h2 class="text-center" style="margin-bottom: 24px;">The Guarantee</h2>
-    <p><strong>Pass within 6 months or full refund. Just email your exam results. No hoops, no questions.</strong></p>
-    <p>Complete the program, take your exam, and if you don't pass — email us your results and we'll refund every dollar. No hoops.</p>
-    <p>We can offer this because it works. Simple as that.</p>
-    <div class="guarantee__cta">
-      <button class="btn btn--secondary open-ml-modal">Start 50 Free Questions</button>
+<section class="section section--lg bg-sec">
+  <div class="container">
+    <div class="guarantee-box reveal">
+      <h2 class="tc">The Guarantee 🛡️</h2>
+      <p><strong>Pass within 6 months or full refund.</strong> Just email your exam results. No hoops, no questions.</p>
+      <p>Complete the program, take your exam, and if you don't pass — we'll refund every dollar.</p>
+      <p style="font-weight: 600; color: var(--fg);">We can offer this because it works. Simple as that.</p>
+      <div class="tc">
+        <button class="btn btn--primary open-ml-modal">Start 50 Free Questions →</button>
+      </div>
     </div>
   </div>
 </section>
 
 <!-- ===== EXAM FOCUSED ===== -->
-<section id="get-started" class="section section--lg bg-light">
+<section class="section section--lg bg-light">
   <div class="container">
     <div class="split split--reversed">
-      <div class="split__text">
+      <div class="split__text reveal-right">
         <h2>Exam-Focused. Results-Driven.</h2>
-        <p>Built specifically for the ACRP-CP and SOCRA exams. Every question maps to actual exam domains.</p>
+        <p>Built specifically for the ACRP-CP and SOCRA exams. Every question maps to actual exam domains — so you study what matters.</p>
       </div>
-      <div class="split__image">
-        <img src="img-analytics.png" alt="Performance Analytics dashboard showing category performance chart and difficulty breakdown">
+      <div class="split__image reveal-left">
+        <img src="img-analytics.png" alt="Performance Analytics dashboard">
       </div>
     </div>
   </div>
 </section>
 
 <!-- ===== WHAT'S INSIDE ===== -->
-<section class="section bg-promo">
-  <div class="container text-center">
-    <h2 style="margin-bottom: 24px;">What's Inside?</h2>
-    <div class="whats-inside__image">
-      <img src="img-studymode.png" alt="Study Mode showing session settings with Tutor Mode, Timed Exam, and Timed Tutor options" style="margin: 0 auto; border-radius: var(--radius-img); box-shadow: 0 4px 24px rgba(23,15,76,0.08);">
+<section class="section section--lg bg-promo">
+  <div class="container tc">
+    <h2 class="reveal">What's Inside?</h2>
+    <div class="inside-img reveal" style="transition-delay:0.15s">
+      <img src="img-studymode.png" alt="Study Mode with Tutor, Timed Exam, and Timed Tutor options">
+    </div>
+    <div class="feature-row">
+      <div class="feature-card reveal" style="transition-delay:0.1s">
+        <div class="num">01</div>
+        <h3>800+ Practice Questions</h3>
+        <p>Covering all exam domains tested in ACRP and SOCRA certifications.</p>
+      </div>
+      <div class="feature-card reveal" style="transition-delay:0.2s">
+        <div class="num">02</div>
+        <h3>Detailed Explanations</h3>
+        <p>Every answer includes the reasoning to deepen your understanding.</p>
+      </div>
+      <div class="feature-card reveal" style="transition-delay:0.3s">
+        <div class="num">03</div>
+        <h3>Simulated Exam Mode</h3>
+        <p>Practice under real test conditions with timed pressure.</p>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- ===== FEATURES GRID ===== -->
-<section class="section bg-promo" style="padding-top: 16px;">
+<!-- ===== CTA BANNER ===== -->
+<section class="section section--lg bg-light">
   <div class="container">
-    <div class="features-grid">
-      <div class="features-grid__item"><h2>1. <strong>800+ Practice Questions</strong></h2></div>
-      <div class="features-grid__item"><p>Covering all exam domains tested in ACRP and SOCRA certifications</p></div>
-      <div class="features-grid__item"><h2>2. <strong>Detailed Explanations</strong></h2></div>
-      <div class="features-grid__item"><p>Every answer includes the reasoning to deepen your understanding</p></div>
-      <div class="features-grid__item"><h2>3. Simulated Exam Mode</h2></div>
-      <div class="features-grid__item"><p>Practice under real test conditions with timed pressure</p></div>
+    <div class="cta-banner reveal">
+      <h2>Ready to pass your certification?</h2>
+      <p>Join other CRCs who chose focused, affordable prep over overpriced bootcamps.</p>
+      <button class="btn open-ml-modal">Start 50 Free Questions →</button>
     </div>
-  </div>
-</section>
-
-<!-- ===== READY TO PASS ===== -->
-<section class="section section--lg bg-light-secondary">
-  <div class="container--narrow text-center">
-    <h2><strong>Ready to pass your certification?</strong></h2>
-    <p>Join other CRCs who chose focused, affordable prep over overpriced bootcamps.</p>
   </div>
 </section>
 
@@ -470,17 +675,17 @@
 <section id="about" class="section section--lg bg-light">
   <div class="container">
     <div class="split">
-      <div class="split__text">
-        <p><strong>Built by a CRC who passed — for CRCs who will.</strong></p>
+      <div class="split__text reveal-left">
+        <p style="font-weight: 700; font-size: 1.2rem; color: var(--fg); margin-bottom: 16px;">Built by a CRC who passed — for CRCs who will.</p>
         <p>I'm Ish. I've spent 5+ years in clinical research, managed trials across 37 sites, and earned my ACRP-CP while working full-time.</p>
         <p>When I studied for my certification, nothing felt like the real exam. The PDFs were dry. The bootcamps were expensive and generic. I built what I wished existed.</p>
-        <p>This isn't theory. It's the exact preparation that works.</p>
-        <div style="margin-top: 24px;">
-          <button class="btn btn--primary open-ml-modal">Start 50 Free Questions</button>
+        <p style="font-weight: 600; color: var(--fg);">This isn't theory. It's the exact preparation that works.</p>
+        <div style="margin-top: 28px;">
+          <button class="btn btn--primary open-ml-modal">Start 50 Free Questions →</button>
         </div>
       </div>
-      <div class="split__image split__image--circle">
-        <img src="img-headshot.png" alt="Ish - Creator of CR Qbank" style="max-width: 440px; margin: 0 auto;">
+      <div class="split__image split__image--circle reveal-right">
+        <img src="img-headshot.png" alt="Ish - Creator of CR Qbank" style="max-width: 380px; margin: 0 auto;">
       </div>
     </div>
   </div>
@@ -488,18 +693,18 @@
 
 <!-- ===== TESTIMONIALS ===== -->
 <section class="section section--lg bg-light">
-  <div class="container--narrow">
-    <h2 class="text-center" style="margin-bottom: 32px;">What CRC's Are Saying</h2>
-    <div class="testimonials-grid">
-      <div class="testimonial-card">
-        <svg class="testimonial-card__quote-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M8.909 13.577c-.289 0-.566.043-.842.083.09-.295.181-.594.33-.864.147-.391.378-.73.607-1.071.192-.37.53-.62.779-.936.26-.307.616-.511.897-.767.276-.266.638-.4.925-.587.301-.169.563-.356.843-.444l.699-.282.614-.25-.629-2.46-.773.183c-.248.06-.55.132-.893.217-.352.063-.726.237-1.143.396-.413.18-.89.302-1.333.591-.446.277-.96.508-1.414.878-.44.382-.97.714-1.36 1.2-.428.454-.851.932-1.179 1.475-.38.518-.638 1.086-.91 1.649-.246.562-.444 1.137-.606 1.696-.307 1.12-.445 2.183-.498 3.093-.044.912-.018 1.669.037 2.218.02.259.056.51.082.684l.032.213.034-.007c.23 1.054.761 2.023 1.53 2.795a5.32 5.32 0 002.818 1.564 5.32 5.32 0 003.235-.148 5.32 5.32 0 002.656-1.816 5.32 5.32 0 001.257-2.923 5.32 5.32 0 00-.53-3.129 5.32 5.32 0 00-2.152-2.37 5.32 5.32 0 00-3.112-.88zm14.258 0c-.289 0-.566.043-.843.083.09-.295.182-.594.33-.864.148-.391.379-.73.608-1.071.192-.37.53-.62.779-.936.26-.307.615-.511.897-.767.276-.266.637-.4.925-.587.3-.169.562-.356.842-.444l.699-.282.614-.25-.628-2.46-.774.183c-.248.06-.55.132-.893.217-.352.063-.726.237-1.143.396-.412.181-.89.302-1.333.592-.446.277-.96.508-1.414.879-.44.382-.97.713-1.361 1.199-.428.454-.85.932-1.178 1.475-.38.518-.638 1.087-.91 1.649-.246.562-.444 1.137-.606 1.696-.307 1.12-.445 2.183-.497 3.093-.044.912-.018 1.67.036 2.218.02.259.056.51.082.684l.032.213.034-.007a5.32 5.32 0 001.53 2.795 5.32 5.32 0 002.818 1.564 5.32 5.32 0 003.235-.148 5.32 5.32 0 002.656-1.816 5.32 5.32 0 001.257-2.924 5.32 5.32 0 00-.53-3.128 5.32 5.32 0 00-2.151-2.37 5.32 5.32 0 00-3.112-.88z"/></svg>
-        <p class="testimonial-card__text">"I haven't found any other resources like this one."</p>
-        <p class="testimonial-card__author"><strong>Brianna S.</strong> — SOCRA exam candidate</p>
+  <div class="narrow">
+    <h2 class="tc reveal" style="margin-bottom: 36px;">What CRC's Are Saying</h2>
+    <div class="test-grid">
+      <div class="test-card reveal" style="transition-delay:0.1s">
+        <span class="test-card__quote">"</span>
+        <p class="test-card__text">"I haven't found any other resources like this one."</p>
+        <p class="test-card__author"><strong>Brianna S.</strong> — SOCRA exam candidate</p>
       </div>
-      <div class="testimonial-card">
-        <svg class="testimonial-card__quote-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M8.909 13.577c-.289 0-.566.043-.842.083.09-.295.181-.594.33-.864.147-.391.378-.73.607-1.071.192-.37.53-.62.779-.936.26-.307.616-.511.897-.767.276-.266.638-.4.925-.587.301-.169.563-.356.843-.444l.699-.282.614-.25-.629-2.46-.773.183c-.248.06-.55.132-.893.217-.352.063-.726.237-1.143.396-.413.18-.89.302-1.333.591-.446.277-.96.508-1.414.878-.44.382-.97.714-1.36 1.2-.428.454-.851.932-1.179 1.475-.38.518-.638 1.086-.91 1.649-.246.562-.444 1.137-.606 1.696-.307 1.12-.445 2.183-.498 3.093-.044.912-.018 1.669.037 2.218.02.259.056.51.082.684l.032.213.034-.007c.23 1.054.761 2.023 1.53 2.795a5.32 5.32 0 002.818 1.564 5.32 5.32 0 003.235-.148 5.32 5.32 0 002.656-1.816 5.32 5.32 0 001.257-2.923 5.32 5.32 0 00-.53-3.129 5.32 5.32 0 00-2.152-2.37 5.32 5.32 0 00-3.112-.88zm14.258 0c-.289 0-.566.043-.843.083.09-.295.182-.594.33-.864.148-.391.379-.73.608-1.071.192-.37.53-.62.779-.936.26-.307.615-.511.897-.767.276-.266.637-.4.925-.587.3-.169.562-.356.842-.444l.699-.282.614-.25-.628-2.46-.774.183c-.248.06-.55.132-.893.217-.352.063-.726.237-1.143.396-.412.181-.89.302-1.333.592-.446.277-.96.508-1.414.879-.44.382-.97.713-1.361 1.199-.428.454-.85.932-1.178 1.475-.38.518-.638 1.087-.91 1.649-.246.562-.444 1.137-.606 1.696-.307 1.12-.445 2.183-.497 3.093-.044.912-.018 1.67.036 2.218.02.259.056.51.082.684l.032.213.034-.007a5.32 5.32 0 001.53 2.795 5.32 5.32 0 002.818 1.564 5.32 5.32 0 003.235-.148 5.32 5.32 0 002.656-1.816 5.32 5.32 0 001.257-2.924 5.32 5.32 0 00-.53-3.128 5.32 5.32 0 00-2.151-2.37 5.32 5.32 0 00-3.112-.88z"/></svg>
-        <p class="testimonial-card__text">I spent $700 on a bootcamp and walked out more confused than when I started. I passed my ACRP-CP by building my own system — scenario-based questions, 30 minutes a day, while managing 37 trial sites. I built this because I wished it existed.</p>
-        <p class="testimonial-card__author"><strong>Ish, ACRP-CP Certified</strong> — Creator</p>
+      <div class="test-card reveal" style="transition-delay:0.2s">
+        <span class="test-card__quote">"</span>
+        <p class="test-card__text">I spent $700 on a bootcamp and walked out more confused than when I started. I passed my ACRP-CP by building my own system — scenario-based questions, 30 minutes a day, while managing 37 trial sites. I built this because I wished it existed.</p>
+        <p class="test-card__author"><strong>Ish, ACRP-CP Certified</strong> — Creator</p>
       </div>
     </div>
   </div>
@@ -507,52 +712,41 @@
 
 <!-- ===== FAQ ===== -->
 <section id="faq" class="section section--lg bg-light">
-  <div class="container--narrow">
-    <h2 style="margin-bottom: 24px;">FAQ</h2>
-    <div class="faq-item">
-      <button class="faq-question" aria-expanded="false"><span>Does this cover both ACRP and SOCRA?</span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></button>
-      <div class="faq-answer"><div class="faq-answer__inner"><p>Yes. The core knowledge — ICH-GCP, FDA regulations, clinical operations, ethics — is tested on both exams. This prepares you for either.</p></div></div>
-    </div>
-    <div class="faq-item">
-      <button class="faq-question" aria-expanded="false"><span>How is this different from other prep materials?</span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></button>
-      <div class="faq-answer"><div class="faq-answer__inner"><p>Most question banks give you random facts to memorize. We give you scenarios that teach you to <em>think</em> like the exam expects. Plus, every answer has a detailed explanation.</p></div></div>
-    </div>
-    <div class="faq-item">
-      <button class="faq-question" aria-expanded="false"><span>Can I study on my phone?</span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></button>
-      <div class="faq-answer"><div class="faq-answer__inner"><p>Yes. The platform works on any device.</p></div></div>
-    </div>
-    <div class="faq-item">
-      <button class="faq-question" aria-expanded="false"><span>What if I'm not ready to buy yet?</span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></button>
-      <div class="faq-answer"><div class="faq-answer__inner"><p>Start with 50 free questions. No credit card. See if it works for you.</p></div></div>
+  <div class="narrow">
+    <h2 class="tc reveal" style="margin-bottom: 36px;">Frequently Asked Questions</h2>
+    <div class="reveal" style="transition-delay:0.1s">
+      <div class="faq-item">
+        <button class="faq-q"><span>Does this cover both ACRP and SOCRA?</span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></button>
+        <div class="faq-a"><div class="faq-a__inner"><p>Yes. The core knowledge — ICH-GCP, FDA regulations, clinical operations, ethics — is tested on both exams. This prepares you for either.</p></div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q"><span>How is this different from other prep materials?</span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></button>
+        <div class="faq-a"><div class="faq-a__inner"><p>Most question banks give you random facts to memorize. We give you scenarios that teach you to <em>think</em> like the exam expects. Plus, every answer has a detailed explanation.</p></div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q"><span>Can I study on my phone?</span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></button>
+        <div class="faq-a"><div class="faq-a__inner"><p>Yes. The platform works on any device — phone, tablet, or desktop.</p></div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q"><span>What if I'm not ready to buy yet?</span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></button>
+        <div class="faq-a"><div class="faq-a__inner"><p>Start with 50 free questions. No credit card. See if it works for you.</p></div></div>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- ===== NEWSLETTER ===== -->
-<section class="section section--lg bg-main">
-  <div class="container">
-    <div class="subscribe">
-      <h2>Subscribe to our newsletter</h2>
-      <form class="subscribe-form" id="subscribeForm">
-        <input type="email" placeholder="Email" required>
-        <button type="submit" class="btn btn--main">Subscribe</button>
-      </form>
-      <p id="subscribeSuccess" style="display:none; margin-top:16px; color: var(--main-fg); font-size:1.125rem;">Thanks for subscribing!</p>
-    </div>
-  </div>
-</section>
+
 
 <!-- ===== FOOTER ===== -->
 <footer class="footer">
   <div class="container">
     <div class="footer__inner">
-      <div class="footer__copy">©2025 • Built By CRC's for CRC'S • Copyright 📧support@clinicalresearchquestionbank.com</div>
+      <div class="footer__copy">©2025 CR Qbank • Built by CRC's for CRC's • 📧 support@clinicalresearchquestionbank.com</div>
       <div class="footer__social">
-        <a href="https://www.instagram.com/crqbank/" target="_blank" rel="noopener noreferrer" title="Instagram"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><g clip-path="url(#ig3)"><path d="M7.444.677C6.274.732 5.475.919 4.776 1.194 4.053 1.475 3.44 1.854 2.83 2.466 2.22 3.078 1.845 3.691 1.565 4.415 1.294 5.115 1.11 5.915 1.059 7.086 1.007 8.258.996 8.634 1.001 11.621c.006 2.987.02 3.362.077 4.535.056 1.17.242 1.97.517 2.668.282.723.66 1.336 1.272 1.946.612.61 1.225.985 1.951 1.265.7.27 1.5.455 2.671.506 1.171.051 1.547.063 4.534.057 2.987-.006 3.362-.02 4.535-.076 1.174-.056 1.968-.242 2.668-.516.723-.283 1.336-.66 1.946-1.273.61-.612.985-1.226 1.265-1.951.271-.7.455-1.5.507-2.67.051-1.172.063-1.548.057-4.535-.006-2.987-.02-3.362-.076-4.536-.056-1.173-.242-1.969-.517-2.669-.282-.723-.66-1.336-1.272-1.946a5.34 5.34 0 00-1.951-1.265C18.485.894 17.685.71 16.514.659 15.343.608 14.966.596 11.979.601 8.992.607 8.618.62 7.444.677zm.129 19.885c-1.073-.046-1.655-.228-2.043-.377-.514-.198-.88-.44-1.267-.824a3.4 3.4 0 01-.825-1.263c-.15-.388-.334-.969-.387-2.042-.054-1.159-.066-1.507-.073-4.444-.006-2.937.006-3.284.057-4.444.046-1.072.226-1.655.376-2.043.198-.514.438-.88.822-1.267a3.4 3.4 0 011.264-.825c.387-.15.97-.334 2.042-.385 1.16-.055 1.507-.066 4.444-.073 2.936-.006 3.285.006 4.445.057 1.072.047 1.655.225 2.043.376.514.198.88.438 1.267.822.387.385.624.749.825 1.264.151.387.333.97.384 2.042.055 1.16.068 1.508.073 4.444.006 2.936-.005 3.285-.056 4.444-.046 1.072-.226 1.655-.376 2.043-.198.514-.438.88-.822 1.267a3.4 3.4 0 01-1.264.825c-.387.151-.97.334-2.042.385-1.16.055-1.508.067-4.444.073-2.937.006-3.284-.006-4.444-.057zM16.54 5.721a1.36 1.36 0 002.42-.072 1.36 1.36 0 00-1.103-1.25 1.36 1.36 0 00-1.317 2.322zM6.352 11.611a5.66 5.66 0 005.659 5.637 5.66 5.66 0 005.637-5.659 5.66 5.66 0 00-5.659-5.637 5.66 5.66 0 00-5.637 5.659zm1.981-.004a3.68 3.68 0 013.674-3.66 3.68 3.68 0 013.66 3.673 3.68 3.68 0 01-3.674 3.66 3.68 3.68 0 01-3.66-3.673z" fill="currentColor"/></g><defs><clipPath id="ig3"><rect width="22" height="22" fill="white" transform="translate(1 .6)"/></clipPath></defs></svg></a>
-        <a href="https://x.com/CRQbank" target="_blank" rel="noopener noreferrer" title="X"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><g clip-path="url(#xc3)"><path d="M14.058 10.464L21.34 2h-1.726l-6.323 7.349L8.241 2H2.417l7.636 11.114L2.417 21.99h1.726l6.676-7.761 5.333 7.761h5.824l-7.919-11.525zm-2.364 2.748l-.773-1.107L4.764 3.3h2.65l4.969 7.107.774 1.107 6.457 9.237h-2.65l-5.27-7.538z" fill="currentColor"/></g><defs><clipPath id="xc3"><rect width="20" height="20" fill="white" transform="translate(2 2)"/></clipPath></defs></svg></a>
+        <a href="https://www.instagram.com/crqbank/" target="_blank" rel="noopener noreferrer" title="Instagram"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><g clip-path="url(#ig4)"><path d="M7.444.677C6.274.732 5.475.919 4.776 1.194 4.053 1.475 3.44 1.854 2.83 2.466 2.22 3.078 1.845 3.691 1.565 4.415 1.294 5.115 1.11 5.915 1.059 7.086 1.007 8.258.996 8.634 1.001 11.621c.006 2.987.02 3.362.077 4.535.056 1.17.242 1.97.517 2.668.282.723.66 1.336 1.272 1.946.612.61 1.225.985 1.951 1.265.7.27 1.5.455 2.671.506 1.171.051 1.547.063 4.534.057 2.987-.006 3.362-.02 4.535-.076 1.174-.056 1.968-.242 2.668-.516.723-.283 1.336-.66 1.946-1.273.61-.612.985-1.226 1.265-1.951.271-.7.455-1.5.507-2.67.051-1.172.063-1.548.057-4.535-.006-2.987-.02-3.362-.076-4.536-.056-1.173-.242-1.969-.517-2.669-.282-.723-.66-1.336-1.272-1.946a5.34 5.34 0 00-1.951-1.265C18.485.894 17.685.71 16.514.659 15.343.608 14.966.596 11.979.601 8.992.607 8.618.62 7.444.677zm.129 19.885c-1.073-.046-1.655-.228-2.043-.377-.514-.198-.88-.44-1.267-.824a3.4 3.4 0 01-.825-1.263c-.15-.388-.334-.969-.387-2.042-.054-1.159-.066-1.507-.073-4.444-.006-2.937.006-3.284.057-4.444.046-1.072.226-1.655.376-2.043.198-.514.438-.88.822-1.267a3.4 3.4 0 011.264-.825c.387-.15.97-.334 2.042-.385 1.16-.055 1.507-.066 4.444-.073 2.936-.006 3.285.006 4.445.057 1.072.047 1.655.225 2.043.376.514.198.88.438 1.267.822.387.385.624.749.825 1.264.151.387.333.97.384 2.042.055 1.16.068 1.508.073 4.444.006 2.936-.005 3.285-.056 4.444-.046 1.072-.226 1.655-.376 2.043-.198.514-.438.88-.822 1.267a3.4 3.4 0 01-1.264.825c-.387.151-.97.334-2.042.385-1.16.055-1.508.067-4.444.073-2.937.006-3.284-.006-4.444-.057zM16.54 5.721a1.36 1.36 0 002.42-.072 1.36 1.36 0 00-1.103-1.25 1.36 1.36 0 00-1.317 2.322zM6.352 11.611a5.66 5.66 0 005.659 5.637 5.66 5.66 0 005.637-5.659 5.66 5.66 0 00-5.659-5.637 5.66 5.66 0 00-5.637 5.659zm1.981-.004a3.68 3.68 0 013.674-3.66 3.68 3.68 0 013.66 3.673 3.68 3.68 0 01-3.674 3.66 3.68 3.68 0 01-3.66-3.673z" fill="currentColor"/></g><defs><clipPath id="ig4"><rect width="22" height="22" fill="white" transform="translate(1 .6)"/></clipPath></defs></svg></a>
+        <a href="https://x.com/CRQbank" target="_blank" rel="noopener noreferrer" title="X"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><g clip-path="url(#xc4)"><path d="M14.058 10.464L21.34 2h-1.726l-6.323 7.349L8.241 2H2.417l7.636 11.114L2.417 21.99h1.726l6.676-7.761 5.333 7.761h5.824l-7.919-11.525zm-2.364 2.748l-.773-1.107L4.764 3.3h2.65l4.969 7.107.774 1.107 6.457 9.237h-2.65l-5.27-7.538z" fill="currentColor"/></g><defs><clipPath id="xc4"><rect width="20" height="20" fill="white" transform="translate(2 2)"/></clipPath></defs></svg></a>
         <a href="https://www.youtube.com/@ClinicalResearchQbank" target="_blank" rel="noopener noreferrer" title="YouTube"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M20.595 5.07C21.541 5.325 22.288 6.075 22.54 7.028 23 8.755 23 12.358 23 12.358s0 3.604-.46 5.33a2.62 2.62 0 01-1.945 1.957C18.88 20.108 12 20.108 12 20.108s-6.879 0-8.595-.463a2.62 2.62 0 01-1.945-1.957C1 15.961 1 12.358 1 12.358s0-3.603.46-5.33A2.62 2.62 0 013.405 5.07C5.12 4.608 12 4.608 12 4.608s6.88 0 8.595.463zM15.5 12.358L9.75 15.63V9.087l5.75 3.271z" fill="currentColor"/></svg></a>
       </div>
-      <div></div>
     </div>
   </div>
 </footer>
@@ -562,11 +756,69 @@
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960"><path d="M480-528 296-344l-56-56 240-240 240 240-56 56-184-184Z"/></svg>
 </button>
 
-<!-- ===== MAILERLITE JS (loads their form handler) ===== -->
+<!-- ===== MAILERLITE JS ===== -->
 <script src="https://groot.mailerlite.com/js/w/webforms.min.js?v95037e5bac78f29ed026832ca21a7c7b" type="text/javascript"></script>
 
 <script>
-  // ===== MODAL LOGIC =====
+(function() {
+  // ===== SCROLL REVEAL =====
+  const revealEls = document.querySelectorAll('.reveal, .reveal-left, .reveal-right');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+  revealEls.forEach(el => observer.observe(el));
+
+  // ===== STICKY HEADER SHADOW =====
+  const header = document.getElementById('header');
+  window.addEventListener('scroll', () => {
+    header.classList.toggle('scrolled', window.scrollY > 10);
+  }, { passive: true });
+
+  // ===== ACTIVE NAV HIGHLIGHTING =====
+  const sections = document.querySelectorAll('section[id]');
+  const navLinks = document.querySelectorAll('.nav a[href^="#"], .mobile-drawer a[href^="#"]');
+  function updateActiveNav() {
+    let current = '';
+    sections.forEach(section => {
+      const top = section.offsetTop - 120;
+      if (window.scrollY >= top) current = section.getAttribute('id');
+    });
+    navLinks.forEach(link => {
+      link.classList.toggle('active', link.getAttribute('href') === '#' + current);
+    });
+  }
+  window.addEventListener('scroll', updateActiveNav, { passive: true });
+  updateActiveNav();
+
+  // ===== MOBILE DRAWER =====
+  const hamburger = document.getElementById('hamburger');
+  const drawer = document.getElementById('mobileDrawer');
+  const overlay = document.getElementById('drawerOverlay');
+
+  function openDrawer() {
+    hamburger.classList.add('open');
+    drawer.classList.add('open');
+    overlay.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeDrawer() {
+    hamburger.classList.remove('open');
+    drawer.classList.remove('open');
+    overlay.classList.remove('open');
+    document.body.style.overflow = '';
+  }
+  hamburger.addEventListener('click', () => {
+    drawer.classList.contains('open') ? closeDrawer() : openDrawer();
+  });
+  overlay.addEventListener('click', closeDrawer);
+  drawer.querySelectorAll('a').forEach(a => a.addEventListener('click', closeDrawer));
+
+  // ===== MODAL =====
   const modal = document.getElementById('mlModal');
   const modalClose = document.getElementById('mlModalClose');
   const formView = document.getElementById('mlFormView');
@@ -574,91 +826,71 @@
   const captureForm = document.getElementById('mlCaptureForm');
   const submitBtn = document.getElementById('mlSubmitBtn');
 
-  // Open modal on any "Start 50 Free Questions" button
   document.querySelectorAll('.open-ml-modal').forEach(btn => {
     btn.addEventListener('click', (e) => {
       e.preventDefault();
-      // Reset to form view each time
+      closeDrawer();
       formView.style.display = 'block';
       successView.style.display = 'none';
       submitBtn.disabled = false;
       submitBtn.textContent = 'Get Free Access →';
+      captureForm.reset();
       modal.classList.add('active');
       document.body.style.overflow = 'hidden';
     });
   });
 
-  // Close modal
   function closeModal() {
     modal.classList.remove('active');
     document.body.style.overflow = '';
   }
   modalClose.addEventListener('click', closeModal);
-  modal.addEventListener('click', (e) => {
-    if (e.target === modal) closeModal();
-  });
-  document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape' && modal.classList.contains('active')) closeModal();
-  });
+  modal.addEventListener('click', (e) => { if (e.target === modal) closeModal(); });
+  document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeModal(); });
 
-  // Handle form submission — POST to MailerLite, then redirect
   captureForm.addEventListener('submit', async (e) => {
     e.preventDefault();
-
     const formData = new FormData(captureForm);
     submitBtn.disabled = true;
     submitBtn.textContent = 'Submitting...';
 
     try {
-      // Submit to MailerLite via fetch
-      await fetch(captureForm.action, {
-        method: 'POST',
-        body: formData,
-        mode: 'no-cors' // MailerLite doesn't send CORS headers for this endpoint
-      });
-    } catch (err) {
-      // no-cors will often land here but the request still goes through
-      console.log('MailerLite submission sent');
-    }
+      await fetch(captureForm.action, { method: 'POST', body: formData, mode: 'no-cors' });
+    } catch (err) {}
 
-    // Also hit the takel endpoint (analytics/tracking)
-    try {
-      fetch("https://assets.mailerlite.com/jsonp/2167337/forms/181219082046014470/takel");
-    } catch(e) {}
+    try { fetch("https://assets.mailerlite.com/jsonp/2167337/forms/181219082046014470/takel"); } catch(e) {}
 
-    // Show success state
     formView.style.display = 'none';
     successView.style.display = 'block';
 
-    // Redirect after 2.5 seconds
     setTimeout(() => {
       window.location.href = 'https://clinical-research-qbank.base44.app';
     }, 2500);
   });
 
-  // ===== MOBILE MENU =====
-  const menuBtn = document.getElementById('mobileMenuBtn');
-  const mobileNav = document.getElementById('mobileNav');
-  menuBtn.addEventListener('click', () => mobileNav.classList.toggle('active'));
-  mobileNav.querySelectorAll('a').forEach(a => a.addEventListener('click', () => mobileNav.classList.remove('active')));
-
   // ===== FAQ ACCORDION =====
-  document.querySelectorAll('.faq-question').forEach(btn => {
+  document.querySelectorAll('.faq-q').forEach(btn => {
     btn.addEventListener('click', () => {
       const answer = btn.nextElementSibling;
       const isOpen = btn.classList.contains('active');
-      document.querySelectorAll('.faq-question').forEach(b => { b.classList.remove('active'); b.setAttribute('aria-expanded','false'); b.nextElementSibling.style.maxHeight = null; });
-      if (!isOpen) { btn.classList.add('active'); btn.setAttribute('aria-expanded','true'); answer.style.maxHeight = answer.scrollHeight + 'px'; }
+      document.querySelectorAll('.faq-q').forEach(b => {
+        b.classList.remove('active');
+        b.nextElementSibling.style.maxHeight = null;
+      });
+      if (!isOpen) {
+        btn.classList.add('active');
+        answer.style.maxHeight = answer.scrollHeight + 'px';
+      }
     });
   });
 
-  // ===== NEWSLETTER (footer) =====
-  document.getElementById('subscribeForm').addEventListener('submit', e => { e.preventDefault(); document.getElementById('subscribeSuccess').style.display = 'block'; e.target.style.display = 'none'; });
-
   // ===== SCROLL TO TOP =====
   const scrollTopBtn = document.getElementById('scrollTopBtn');
-  window.addEventListener('scroll', () => scrollTopBtn.classList.toggle('visible', window.scrollY > 400));
+  window.addEventListener('scroll', () => {
+    scrollTopBtn.classList.toggle('visible', window.scrollY > 500);
+  }, { passive: true });
   scrollTopBtn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+})();
 </script>
 
 </body>
