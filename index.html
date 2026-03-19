@@ -596,7 +596,7 @@
       <span><span class="num">4</span> Progress dashboard</span>
     </div>
     <div class="video-wrapper reveal" style="transition-delay:0.3s">
-      <video muted autoplay controls>
+      <video id="demoVideo" muted autoplay playsinline controls loop>
         <source src="demo.mp4" type="video/mp4">
       </video>
     </div>
@@ -890,6 +890,23 @@
     scrollTopBtn.classList.toggle('visible', window.scrollY > 500);
   }, { passive: true });
   scrollTopBtn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+  // ===== VIDEO AUTOPLAY FALLBACK =====
+  const video = document.getElementById('demoVideo');
+  if (video) {
+    // Force play when video enters viewport
+    const vidObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          video.play().catch(() => {});
+          vidObserver.unobserve(video);
+        }
+      });
+    }, { threshold: 0.3 });
+    vidObserver.observe(video);
+
+    // Also try on page load
+    video.play().catch(() => {});
+  }
 })();
 </script>
 
