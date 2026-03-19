@@ -166,15 +166,19 @@
     .faq-a__inner{padding:0 0 20px}
     .faq-a__inner p{color:rgba(23,15,76,.7)}
 
-    .footer{background:var(--bg);padding:20px 0 28px;border-top:1px solid rgba(23,15,76,.06)}
-    .footer__inner{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px}
+    .footer{background:var(--bg);padding:24px 0 28px;border-top:1px solid rgba(23,15,76,.06)}
+    .footer__inner{display:flex;flex-direction:column;gap:20px}
+    .footer__top{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px}
     .footer__copy{font-size:.85rem;color:rgba(23,15,76,.5)}
     .footer__copy a{color:rgba(23,15,76,.5);text-decoration:underline}
     .footer__social{display:flex;gap:16px}
     .footer__social a{display:flex;align-items:center;justify-content:center;width:36px;height:36px;border-radius:8px;transition:background .15s}
     .footer__social a:hover{background:rgba(23,15,76,.05)}
     .footer__social svg{width:20px;height:20px}
-    @media(max-width:600px){.footer__inner{flex-direction:column;text-align:center}}
+    .footer__links{display:flex;gap:20px;flex-wrap:wrap;justify-content:center;padding-top:8px;border-top:1px solid rgba(23,15,76,.06)}
+    .footer__links a{font-size:.8rem;color:rgba(23,15,76,.5);transition:color .2s}
+    .footer__links a:hover{color:rgba(23,15,76,.8)}
+    @media(max-width:600px){.footer__top{flex-direction:column;text-align:center}}
 
     .scroll-top{position:fixed;right:24px;bottom:24px;width:48px;height:48px;border-radius:50%;background:var(--fg);border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 16px rgba(23,15,76,.25);opacity:0;visibility:hidden;transition:all .3s;z-index:100;transform:translateY(12px)}
     .scroll-top.visible{opacity:1;visibility:visible;transform:translateY(0)}
@@ -469,11 +473,17 @@
 <footer class="footer">
   <div class="container">
     <div class="footer__inner">
-      <div class="footer__copy">&copy;2025 CR Qbank &bull; Built by CRC's for CRC's &bull; &#128231; <a href="mailto:support@clinicalresearchquestionbank.com">support@clinicalresearchquestionbank.com</a></div>
-      <div class="footer__social">
-        <a href="https://www.instagram.com/crqbank/" target="_blank" rel="noopener noreferrer" title="Instagram"><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 1.17.054 1.97.24 2.43.403a4.08 4.08 0 011.523.99 4.08 4.08 0 01.99 1.524c.163.46.35 1.26.403 2.428.058 1.267.07 1.647.07 4.85s-.012 3.584-.07 4.85c-.054 1.17-.24 1.97-.403 2.43a4.08 4.08 0 01-.99 1.523 4.08 4.08 0 01-1.524.99c-.46.163-1.26.35-2.428.403-1.267.058-1.647.07-4.85.07s-3.584-.012-4.85-.07c-1.17-.054-1.97-.24-2.43-.403a4.08 4.08 0 01-1.523-.99 4.08 4.08 0 01-.99-1.524c-.163-.46-.35-1.26-.403-2.428C2.175 15.584 2.163 15.204 2.163 12s.012-3.584.07-4.85c.054-1.17.24-1.97.403-2.43a4.08 4.08 0 01.99-1.523A4.08 4.08 0 015.15 2.636c.46-.163 1.26-.35 2.428-.403C8.845 2.175 9.225 2.163 12 2.163zM12 0C8.741 0 8.333.014 7.053.072 5.775.131 4.903.333 4.14.63a6.21 6.21 0 00-2.228 1.45A6.21 6.21 0 00.462 4.31C.166 5.073-.036 5.944.005 7.222.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.06 1.277.261 2.15.558 2.912a6.21 6.21 0 001.45 2.228 6.21 6.21 0 002.228 1.45c.763.297 1.635.499 2.913.558C8.333 23.986 8.741 24 12 24s3.668-.014 4.948-.072c1.277-.06 2.15-.261 2.912-.558a6.21 6.21 0 002.228-1.45 6.21 6.21 0 001.45-2.228c.297-.763.499-1.635.558-2.913C23.986 15.668 24 15.259 24 12s-.014-3.668-.072-4.948c-.06-1.277-.261-2.15-.558-2.912a6.21 6.21 0 00-1.45-2.228A6.21 6.21 0 0019.692.462C18.929.166 18.057-.036 16.779.005 15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 11-2.88 0 1.44 1.44 0 012.88 0z" fill="currentColor"/></svg></a>
-        <a href="https://x.com/CRQbank" target="_blank" rel="noopener noreferrer" title="X"><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M14.058 10.464L21.34 2h-1.726l-6.323 7.349L8.241 2H2.417l7.636 11.114L2.417 21.99h1.726l6.676-7.761 5.333 7.761h5.824l-7.919-11.525zm-2.364 2.748l-.773-1.107L4.764 3.3h2.65l4.969 7.107.774 1.107 6.457 9.237h-2.65l-5.27-7.538z" fill="currentColor"/></svg></a>
-        <a href="https://www.youtube.com/@ClinicalResearchQbank" target="_blank" rel="noopener noreferrer" title="YouTube"><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M20.595 5.07C21.541 5.325 22.288 6.075 22.54 7.028 23 8.755 23 12.358 23 12.358s0 3.604-.46 5.33a2.62 2.62 0 01-1.945 1.957C18.88 20.108 12 20.108 12 20.108s-6.879 0-8.595-.463a2.62 2.62 0 01-1.945-1.957C1 15.961 1 12.358 1 12.358s0-3.603.46-5.33A2.62 2.62 0 013.405 5.07C5.12 4.608 12 4.608 12 4.608s6.88 0 8.595.463zM15.5 12.358L9.75 15.63V9.087l5.75 3.271z" fill="currentColor"/></svg></a>
+      <div class="footer__top">
+        <div class="footer__copy">&copy; 2025 CR Qbank &bull; Built by CRC's for CRC's &bull; &#128231; <a href="mailto:support@clinicalresearchquestionbank.com">support@clinicalresearchquestionbank.com</a></div>
+        <div class="footer__social">
+          <a href="https://www.instagram.com/crqbank/" target="_blank" rel="noopener noreferrer" title="Instagram"><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 1.17.054 1.97.24 2.43.403a4.08 4.08 0 011.523.99 4.08 4.08 0 01.99 1.524c.163.46.35 1.26.403 2.428.058 1.267.07 1.647.07 4.85s-.012 3.584-.07 4.85c-.054 1.17-.24 1.97-.403 2.43a4.08 4.08 0 01-.99 1.523 4.08 4.08 0 01-1.524.99c-.46.163-1.26.35-2.428.403-1.267.058-1.647.07-4.85.07s-3.584-.012-4.85-.07c-1.17-.054-1.97-.24-2.43-.403a4.08 4.08 0 01-1.523-.99 4.08 4.08 0 01-.99-1.524c-.163-.46-.35-1.26-.403-2.428C2.175 15.584 2.163 15.204 2.163 12s.012-3.584.07-4.85c.054-1.17.24-1.97.403-2.43a4.08 4.08 0 01.99-1.523A4.08 4.08 0 015.15 2.636c.46-.163 1.26-.35 2.428-.403C8.845 2.175 9.225 2.163 12 2.163zM12 0C8.741 0 8.333.014 7.053.072 5.775.131 4.903.333 4.14.63a6.21 6.21 0 00-2.228 1.45A6.21 6.21 0 00.462 4.31C.166 5.073-.036 5.944.005 7.222.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.06 1.277.261 2.15.558 2.912a6.21 6.21 0 001.45 2.228 6.21 6.21 0 002.228 1.45c.763.297 1.635.499 2.913.558C8.333 23.986 8.741 24 12 24s3.668-.014 4.948-.072c1.277-.06 2.15-.261 2.912-.558a6.21 6.21 0 002.228-1.45 6.21 6.21 0 001.45-2.228c.297-.763.499-1.635.558-2.913C23.986 15.668 24 15.259 24 12s-.014-3.668-.072-4.948c-.06-1.277-.261-2.15-.558-2.912a6.21 6.21 0 00-1.45-2.228A6.21 6.21 0 0019.692.462C18.929.166 18.057-.036 16.779.005 15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 11-2.88 0 1.44 1.44 0 012.88 0z" fill="currentColor"/></svg></a>
+          <a href="https://x.com/CRQbank" target="_blank" rel="noopener noreferrer" title="X"><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M14.058 10.464L21.34 2h-1.726l-6.323 7.349L8.241 2H2.417l7.636 11.114L2.417 21.99h1.726l6.676-7.761 5.333 7.761h5.824l-7.919-11.525zm-2.364 2.748l-.773-1.107L4.764 3.3h2.65l4.969 7.107.774 1.107 6.457 9.237h-2.65l-5.27-7.538z" fill="currentColor"/></svg></a>
+          <a href="https://www.youtube.com/@ClinicalResearchQbank" target="_blank" rel="noopener noreferrer" title="YouTube"><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M20.595 5.07C21.541 5.325 22.288 6.075 22.54 7.028 23 8.755 23 12.358 23 12.358s0 3.604-.46 5.33a2.62 2.62 0 01-1.945 1.957C18.88 20.108 12 20.108 12 20.108s-6.879 0-8.595-.463a2.62 2.62 0 01-1.945-1.957C1 15.961 1 12.358 1 12.358s0-3.603.46-5.33A2.62 2.62 0 013.405 5.07C5.12 4.608 12 4.608 12 4.608s6.88 0 8.595.463zM15.5 12.358L9.75 15.63V9.087l5.75 3.271z" fill="currentColor"/></svg></a>
+        </div>
+      </div>
+      <div class="footer__links">
+        <a href="/Privacy_Policy.docx">Privacy Policy</a>
+        <a href="/Terms_of_Service.docx">Terms of Service</a>
       </div>
     </div>
   </div>
