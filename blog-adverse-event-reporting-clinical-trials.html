@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Adverse Event Reporting in Clinical Trials: The Complete CRC Guide (2026)</title>
+  <meta name="description" content="Master adverse event reporting for your ACRP or SOCRA exam. AE vs SAE vs SUSAR definitions, reporting timelines, investigator vs sponsor duties, and practice scenarios.">
+  <link rel="canonical" href="https://clinicalresearchquestionbank.com/blog-adverse-event-reporting-clinical-trials.html">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://clinicalresearchquestionbank.com/blog-adverse-event-reporting-clinical-trials.html">
+  <meta property="og:title" content="Adverse Event Reporting in Clinical Trials: Complete CRC Guide">
+  <meta property="og:description" content="Master AE, SAE, and SUSAR reporting for your certification exam. Timelines, definitions, and practice scenarios.">
+  <meta name="robots" content="index, follow">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Exo:wght@400;600;700&family=Open+Sans:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+  <style>
+    :root{--fg:rgba(23,15,76,1);--bg:#fff;--main-fg:rgba(240,241,255,1);--main-bg:rgba(68,71,124,1);--promo-fg:rgba(68,71,124,1);--promo-bg:rgba(240,241,255,1);--btn-fg:#fff;--btn-bg:rgba(23,15,76,1);--r:8px;--font-h:'Exo',sans-serif;--font-b:'Open Sans',sans-serif;--header-h:72px;--accent:rgba(86,90,221,1)}
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}html{scroll-behavior:smooth}body{font-family:var(--font-b);color:var(--fg);background:var(--bg);line-height:1.6;-webkit-font-smoothing:antialiased}a{color:var(--accent);text-decoration:none}a:hover{text-decoration:underline}img{max-width:100%;height:auto;display:block}
+    .header{position:fixed;top:0;left:0;right:0;z-index:500;height:var(--header-h);background:rgba(255,255,255,.95);backdrop-filter:blur(12px);border-bottom:1px solid rgba(23,15,76,.06)}.header__inner{max-width:1200px;margin:0 auto;padding:0 24px;display:flex;align-items:center;justify-content:space-between;height:100%}.header__logo{font-family:var(--font-h);font-weight:700;font-size:1.75rem;color:var(--fg);text-decoration:none}.header__nav{display:flex;align-items:center;gap:20px}.header__nav a{font-size:.95rem;font-weight:600;color:var(--fg);text-decoration:none;padding:8px 14px;border-radius:6px;transition:background .2s}.header__nav a:hover{background:rgba(23,15,76,.06)}
+    .btn{display:inline-flex;align-items:center;justify-content:center;padding:12px 28px;font-family:var(--font-b);font-weight:700;font-size:.95rem;border-radius:var(--r);border:none;cursor:pointer;text-decoration:none!important;transition:all .2s}.btn--primary{background:var(--btn-bg);color:var(--btn-fg)!important;box-shadow:0 4px 16px rgba(23,15,76,.2)}.btn--primary:hover{box-shadow:0 6px 24px rgba(23,15,76,.3);transform:translateY(-1px)}
+    .spacer{height:var(--header-h)}
+    .article-hero{background:linear-gradient(135deg,var(--main-bg) 0%,rgba(86,90,221,.85) 100%);color:var(--main-fg);padding:64px 24px 56px;text-align:center}.article-hero .breadcrumb{font-size:.85rem;opacity:.7;margin-bottom:16px}.article-hero .breadcrumb a{color:var(--main-fg);opacity:.85}.article-hero h1{font-family:var(--font-h);font-weight:700;font-size:2.4rem;line-height:1.2;max-width:780px;margin:0 auto 16px;letter-spacing:-.02em}.article-hero .meta{font-size:.95rem;opacity:.75}@media(min-width:768px){.article-hero h1{font-size:3rem}}
+    .article-body{max-width:740px;margin:0 auto;padding:48px 24px 64px}.article-body h2{font-family:var(--font-h);font-weight:600;font-size:1.75rem;margin:40px 0 16px;color:var(--fg)}.article-body h3{font-family:var(--font-h);font-weight:600;font-size:1.3rem;margin:32px 0 12px;color:var(--fg)}.article-body p{font-size:1.1rem;line-height:1.8;margin-bottom:18px;color:rgba(23,15,76,.8)}.article-body strong{color:var(--fg)}.article-body ul,.article-body ol{margin:0 0 20px 24px;font-size:1.1rem;line-height:1.8;color:rgba(23,15,76,.8)}.article-body li{margin-bottom:8px}.article-body blockquote{border-left:4px solid var(--accent);padding:16px 24px;margin:28px 0;background:var(--promo-bg);border-radius:0 var(--r) var(--r) 0;font-style:italic;color:var(--promo-fg)}
+    .def-box{background:var(--promo-bg);border-radius:12px;padding:24px 28px;margin:24px 0;border-left:4px solid var(--accent)}.def-box h4{font-family:var(--font-h);font-weight:700;font-size:1.1rem;margin-bottom:8px;color:var(--promo-fg)}.def-box p{margin-bottom:8px;color:var(--promo-fg);font-size:1.05rem}
+    .scenario-box{background:rgba(249,115,22,.06);border-radius:12px;padding:24px 28px;margin:28px 0;border-left:4px solid rgba(249,115,22,.6)}.scenario-box h4{font-family:var(--font-h);font-weight:700;font-size:1.1rem;margin-bottom:8px;color:rgba(180,80,0,1)}.scenario-box p{color:rgba(23,15,76,.75);font-size:1.05rem;margin-bottom:8px}
+    .cta-box{background:linear-gradient(135deg,rgba(86,90,221,1),rgba(68,71,124,1));border-radius:16px;padding:40px 36px;text-align:center;color:#fff;margin:48px 0}.cta-box h3{font-family:var(--font-h);color:#fff;margin-bottom:10px;font-size:1.5rem}.cta-box p{color:rgba(255,255,255,.8);margin-bottom:20px}.cta-box .btn{background:#fff;color:var(--fg)!important;font-weight:700}
+    .footer{background:var(--bg);padding:24px 0;border-top:1px solid rgba(23,15,76,.06);text-align:center;font-size:.85rem;color:rgba(23,15,76,.5)}.footer a{color:rgba(23,15,76,.5)}
+    @media(max-width:768px){.header__nav{display:none}.article-hero{padding:48px 20px 40px}.article-body{padding:32px 20px 48px}}
+  </style>
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"Article","headline":"Adverse Event Reporting in Clinical Trials: The Complete CRC Guide (2026)","description":"Master adverse event reporting for your certification exam. AE vs SAE vs SUSAR definitions, timelines, and practice scenarios.","author":{"@type":"Person","name":"Ish"},"publisher":{"@type":"Organization","name":"CR Qbank"},"datePublished":"2026-03-21","dateModified":"2026-03-21"}
+  </script>
+</head>
+<body>
+<header class="header"><div class="header__inner"><a href="/" class="header__logo">CR Qbank</a><nav class="header__nav"><a href="/">Home</a><a href="/blog.html">Blog</a><a href="/#faq">FAQ</a><a href="https://clinical-research-qbank.base44.app" class="btn btn--primary">Try Free</a></nav></div></header>
+<div class="spacer"></div>
+
+<section class="article-hero">
+  <p class="breadcrumb"><a href="/">Home</a> &rsaquo; <a href="/blog.html">Blog</a> &rsaquo; Adverse Event Reporting</p>
+  <h1>Adverse Event Reporting in Clinical Trials: The Complete CRC Guide</h1>
+  <p class="meta">By Ish, ACRP-CP &bull; March 2026 &bull; 11 min read</p>
+</section>
+
+<article class="article-body">
+
+<p>If there's one topic that dominates clinical research certification exams, it's <strong>adverse event reporting</strong>. Whether you're taking the ACRP-CP or SOCRA CCRP, you can expect 10 or more questions testing your understanding of AEs, SAEs, SUSARs, reporting timelines, and the distinction between investigator and sponsor responsibilities.</p>
+
+<p>This guide breaks it all down in plain language &mdash; with practice scenarios to test your understanding.</p>
+
+<h2>Core Definitions You Must Know</h2>
+
+<div class="def-box">
+  <h4>Adverse Event (AE)</h4>
+  <p>Any untoward medical occurrence in a clinical trial participant, regardless of whether it has a causal relationship with the investigational product. This is intentionally broad &mdash; a participant who breaks an ankle falling off a bicycle would be recorded as an AE, even if the study drug is an antidepressant.</p>
+</div>
+
+<div class="def-box">
+  <h4>Serious Adverse Event (SAE)</h4>
+  <p>An AE that meets any of these criteria: results in death, is life-threatening, requires hospitalization or prolongs existing hospitalization, causes persistent or significant disability, results in a congenital anomaly, or requires medical intervention to prevent one of the above.</p>
+</div>
+
+<div class="def-box">
+  <h4>Unexpected Adverse Drug Reaction</h4>
+  <p>An adverse reaction whose nature or severity is <strong>not consistent</strong> with the information in the Investigator's Brochure (or other reference safety information). The key word is "unexpected" &mdash; it's about what's documented, not what's clinically surprising.</p>
+</div>
+
+<div class="def-box">
+  <h4>SUSAR (Suspected Unexpected Serious Adverse Reaction)</h4>
+  <p>An SAE that is both suspected to be related to the investigational product AND is unexpected based on the reference safety information. SUSARs trigger the most urgent reporting requirements.</p>
+</div>
+
+<h2>Critical Distinction: Serious vs. Severe</h2>
+
+<p>This is one of the most commonly missed concepts on certification exams. <strong>Severe</strong> describes intensity &mdash; a severe headache is extremely painful but doesn't necessarily require hospitalization. <strong>Serious</strong> is a regulatory classification based on the criteria above (death, hospitalization, disability, etc.).</p>
+
+<p>An event can be severe but not serious (a debilitating migraine treated at home). It can also be serious but not severe (a brief hospitalization for observation after a mild allergic reaction). The classification that determines reporting requirements is <strong>seriousness</strong>, not severity.</p>
+
+<h2>Reporting Timelines: Who Reports What, and When</h2>
+
+<h3>The Investigator's Responsibilities</h3>
+
+<p>The investigator (and by extension, the CRC supporting them) must report all SAEs to the sponsor <strong>immediately</strong> &mdash; typically within <strong>24 hours</strong> of becoming aware. This initial report should include all available information, even if incomplete. Follow-up reports with additional details are submitted as new information becomes available.</p>
+
+<p>The investigator also reports SAEs to the IRB/IEC according to local requirements, which may have their own specific timelines.</p>
+
+<h3>The Sponsor's Responsibilities</h3>
+
+<p>The sponsor evaluates all reported SAEs for expectedness and causality. If an event qualifies as a SUSAR:</p>
+
+<ul>
+  <li><strong>Fatal or life-threatening SUSARs:</strong> Must be reported to regulatory authorities within <strong>7 calendar days</strong> of the sponsor first becoming aware, with a follow-up report within an additional 8 days (15 days total).</li>
+  <li><strong>All other SUSARs:</strong> Must be reported to regulatory authorities within <strong>15 calendar days</strong>.</li>
+</ul>
+
+<p>The sponsor is also responsible for informing all participating investigators of safety findings that could affect participant safety or trial conduct.</p>
+
+<h2>Exam Trap: Device Reporting vs. Drug Reporting</h2>
+
+<p>If you're taking the SOCRA exam (which tests FDA-specific regulations), be aware that <strong>medical device adverse event reporting has different requirements</strong> than drug/biologic reporting. Device studies follow different timelines and use different forms (e.g., MedWatch 3500A for mandatory reporting). The exam may present two nearly identical scenarios &mdash; one with a drug and one with a device &mdash; that require different answers.</p>
+
+<h2>Practice Scenarios</h2>
+
+<div class="scenario-box">
+  <h4>Scenario 1</h4>
+  <p>A participant in a Phase III diabetes trial is hospitalized for chest pain 3 weeks after starting the study drug. The chest pain is not listed in the Investigator's Brochure as a known adverse reaction. The investigator believes it may be related to the study drug.</p>
+  <p><strong>Question:</strong> How should this be classified, and what are the reporting requirements?</p>
+  <p><strong>Answer:</strong> This is a SUSAR &mdash; it's serious (hospitalization), suspected to be related (investigator assessment), and unexpected (not in the IB). The investigator must report to the sponsor immediately (within 24 hours). The sponsor must report to regulatory authorities within 7 days if life-threatening, or 15 days otherwise.</p>
+</div>
+
+<div class="scenario-box">
+  <h4>Scenario 2</h4>
+  <p>A participant reports a severe headache lasting 6 hours after taking the study medication. They manage it with over-the-counter pain relievers at home. Headache is listed as a common side effect in the Investigator's Brochure.</p>
+  <p><strong>Question:</strong> Is this an SAE?</p>
+  <p><strong>Answer:</strong> No. While the headache is <em>severe</em> in intensity, it does not meet any of the SAE criteria (no hospitalization, not life-threatening, no disability, etc.). It's an AE that should be documented per protocol, but it does not trigger expedited reporting.</p>
+</div>
+
+<div class="scenario-box">
+  <h4>Scenario 3</h4>
+  <p>A participant in a vaccine trial develops an expected mild fever (listed in the IB) but then requires hospitalization because of complications from a pre-existing condition exacerbated by the fever.</p>
+  <p><strong>Question:</strong> How is this classified?</p>
+  <p><strong>Answer:</strong> The hospitalization makes this an SAE, regardless of the fact that fever itself was expected. Whether it's also a SUSAR depends on whether the hospitalization and its complications are consistent with the IB's safety profile. This type of nuanced scenario frequently appears on certification exams.</p>
+</div>
+
+<h2>Common Exam Mistakes to Avoid</h2>
+
+<p><strong>Confusing serious with severe.</strong> Remember: seriousness determines reporting, not severity. "Severe" is just an intensity descriptor.</p>
+
+<p><strong>Forgetting that expectedness is based on the IB.</strong> An adverse reaction is "unexpected" if it's not documented in the Investigator's Brochure, regardless of whether the investigator has seen it clinically before.</p>
+
+<p><strong>Mixing up investigator and sponsor timelines.</strong> Investigators report to sponsors immediately (24 hours). Sponsors report SUSARs to regulators (7 or 15 days). The exam will try to trick you by placing the wrong timeline with the wrong role.</p>
+
+<div class="cta-box">
+  <h3>Test Your AE Reporting Knowledge</h3>
+  <p>800+ scenario-based questions covering adverse events, safety reporting, and every other exam domain. Start with 50 free questions.</p>
+  <a href="https://clinical-research-qbank.base44.app" class="btn">Start 50 Free Questions &rarr;</a>
+</div>
+
+<h2>Final Word</h2>
+
+<p>Adverse event reporting isn't just an exam topic &mdash; it's the backbone of participant safety in clinical research. When you understand these concepts deeply enough to pass a certification exam, you also become a better, safer CRC. That's the whole point.</p>
+
+</article>
+
+<footer class="footer"><div>&copy; 2026 CR Qbank &bull; <a href="/">Home</a> &bull; <a href="/blog.html">Blog</a> &bull; <a href="mailto:support@clinicalresearchquestionbank.com">Contact</a></div></footer>
+</body>
+</html>
