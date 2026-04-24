@@ -176,14 +176,15 @@
     .feature-card p{font-size:.95rem;color:rgba(68,71,124,.7);line-height:1.6}
     @media(max-width:700px){.feature-row{grid-template-columns:1fr}}
 
-    .test-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+    .test-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:24px}
     .test-card{background:var(--promo-bg);border-radius:12px;padding:32px;display:flex;flex-direction:column;gap:16px;border:1px solid rgba(68,71,124,.06);transition:transform .25s;position:relative}
     .test-card:hover{transform:translateY(-3px)}
     .test-card__quote{font-size:3rem;font-family:Georgia,serif;color:rgba(68,71,124,.15);line-height:1;position:absolute;top:16px;left:24px}
     .test-card__text{font-size:1.05rem;line-height:1.7;padding-top:12px}
     .test-card__author{font-size:1rem}
     .test-card__author strong{font-weight:700}
-    @media(max-width:768px){.test-grid{grid-template-columns:1fr}}
+    @media(max-width:900px){.test-grid{grid-template-columns:1fr 1fr}}
+    @media(max-width:600px){.test-grid{grid-template-columns:1fr}}
 
     .faq-item{border-bottom:1px solid rgba(23,15,76,.1)}
     .faq-item:first-child{border-top:1px solid rgba(23,15,76,.1)}
@@ -482,6 +483,11 @@
         <p class="test-card__author"><strong>Brianna S.</strong> &mdash; SOCRA exam candidate</p>
       </div>
       <div class="test-card reveal" style="transition-delay:.2s">
+        <span class="test-card__quote">&ldquo;</span>
+        <p class="test-card__text">"The Qbank offers a well-structured range of questions that closely reflect real exam standards. The detailed explanations and user-friendly interface significantly enhanced my understanding and confidence while preparing."</p>
+        <p class="test-card__author"><strong>Uchenna E.</strong> &mdash; Verified CR Qbank user</p>
+      </div>
+      <div class="test-card reveal" style="transition-delay:.3s">
         <span class="test-card__quote">&ldquo;</span>
         <p class="test-card__text">I spent $700 on a bootcamp and walked out more confused than when I started. I passed my ACRP-CP by building my own system &mdash; scenario-based questions, 30 minutes a day, while managing 37 trial sites. I built this because I wished it existed.</p>
         <p class="test-card__author"><strong>Ish, ACRP-CP Certified</strong> &mdash; Creator</p>
