@@ -176,15 +176,45 @@
     .feature-card p{font-size:.95rem;color:rgba(68,71,124,.7);line-height:1.6}
     @media(max-width:700px){.feature-row{grid-template-columns:1fr}}
 
-    .test-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:24px}
-    .test-card{background:var(--promo-bg);border-radius:12px;padding:32px;display:flex;flex-direction:column;gap:16px;border:1px solid rgba(68,71,124,.06);transition:transform .25s;position:relative}
-    .test-card:hover{transform:translateY(-3px)}
-    .test-card__quote{font-size:3rem;font-family:Georgia,serif;color:rgba(68,71,124,.15);line-height:1;position:absolute;top:16px;left:24px}
-    .test-card__text{font-size:1.05rem;line-height:1.7;padding-top:12px}
-    .test-card__author{font-size:1rem}
-    .test-card__author strong{font-weight:700}
+    /* TESTIMONIAL EYEBROW STAT */
+    .test-eyebrow{display:inline-flex;align-items:center;gap:10px;background:rgba(86,90,221,.08);color:rgba(86,90,221,1);padding:8px 18px;border-radius:100px;font-size:.85rem;font-weight:600;margin-bottom:16px}
+    .test-eyebrow .stars{color:#f59e0b;letter-spacing:1px;font-size:.8rem}
+    .test-eyebrow__sep{width:1px;height:14px;background:rgba(86,90,221,.25)}
+
+    /* FEATURED HERO TESTIMONIAL */
+    .test-featured{background:linear-gradient(135deg,rgba(86,90,221,1) 0%,rgba(68,71,124,1) 100%);border-radius:16px;padding:48px 56px;color:#fff;position:relative;overflow:hidden;margin-bottom:24px;box-shadow:0 12px 40px rgba(68,71,124,.18)}
+    .test-featured::before{content:'\201C';position:absolute;top:-20px;left:32px;font-size:10rem;font-family:Georgia,serif;color:rgba(255,255,255,.12);line-height:1;pointer-events:none}
+    .test-featured__stars{color:#fbbf24;font-size:1.1rem;letter-spacing:3px;margin-bottom:18px;position:relative}
+    .test-featured__text{font-size:1.5rem;line-height:1.5;font-weight:500;margin-bottom:24px;font-family:var(--font-h);position:relative;max-width:780px}
+    .test-featured__author{display:flex;align-items:center;gap:14px;position:relative}
+    .test-featured__avatar{width:48px;height:48px;border-radius:50%;background:rgba(255,255,255,.15);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:1rem;flex-shrink:0;backdrop-filter:blur(4px);border:1.5px solid rgba(255,255,255,.2)}
+    .test-featured__name{font-size:1rem;font-weight:700;color:#fff}
+    .test-featured__role{font-size:.85rem;color:rgba(255,255,255,.7);margin-top:2px}
+    @media(max-width:768px){.test-featured{padding:36px 28px}.test-featured__text{font-size:1.2rem}.test-featured::before{font-size:7rem;top:-12px;left:18px}}
+
+    /* SUPPORTING CARDS GRID */
+    .test-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-bottom:24px}
+    .test-card{background:var(--bg);border:1px solid rgba(68,71,124,.12);border-radius:12px;padding:28px 24px;display:flex;flex-direction:column;gap:14px;transition:transform .25s ease,box-shadow .25s ease,border-color .25s ease;position:relative}
+    .test-card:hover{transform:translateY(-3px);box-shadow:0 8px 24px rgba(68,71,124,.1);border-color:rgba(86,90,221,.25)}
+    .test-card__stars{color:#f59e0b;font-size:.85rem;letter-spacing:2px}
+    .test-card__text{font-size:1rem;line-height:1.65;color:var(--fg);flex:1}
+    .test-card__author{display:flex;align-items:center;gap:10px;margin-top:auto;padding-top:6px}
+    .test-card__avatar{width:36px;height:36px;border-radius:50%;background:rgba(86,90,221,.12);color:rgba(86,90,221,1);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:.85rem;flex-shrink:0}
+    .test-card__meta{display:flex;flex-direction:column;line-height:1.3}
+    .test-card__name{font-size:.9rem;font-weight:700;color:var(--fg)}
+    .test-card__role{font-size:.78rem;color:rgba(23,15,76,.55)}
     @media(max-width:900px){.test-grid{grid-template-columns:1fr 1fr}}
     @media(max-width:600px){.test-grid{grid-template-columns:1fr}}
+
+    /* CREATOR NOTE */
+    .test-creator{background:rgba(240,241,255,.5);border:1px solid rgba(68,71,124,.1);border-radius:12px;padding:32px 36px;display:flex;gap:24px;align-items:flex-start;border-left:4px solid rgba(86,90,221,1)}
+    .test-creator__label{display:inline-flex;align-items:center;gap:8px;background:rgba(86,90,221,1);color:#fff;padding:5px 14px;border-radius:100px;font-size:.7rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;margin-bottom:14px}
+    .test-creator__avatar{width:64px;height:64px;border-radius:50%;background:rgba(86,90,221,.15);color:rgba(86,90,221,1);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:1.3rem;flex-shrink:0}
+    .test-creator__body{flex:1}
+    .test-creator__text{font-size:1rem;line-height:1.7;color:var(--fg);margin-bottom:14px;font-style:italic}
+    .test-creator__name{font-size:.95rem;font-weight:700;color:var(--fg)}
+    .test-creator__role{font-size:.85rem;color:rgba(23,15,76,.6);margin-top:2px}
+    @media(max-width:600px){.test-creator{flex-direction:column;padding:28px 24px;gap:16px}}
 
     .faq-item{border-bottom:1px solid rgba(23,15,76,.1)}
     .faq-item:first-child{border-top:1px solid rgba(23,15,76,.1)}
@@ -474,23 +504,76 @@
 
 <!-- TESTIMONIALS -->
 <section class="section section--lg bg-light">
-  <div class="narrow">
-    <h2 class="tc reveal" style="margin-bottom:36px">What CRC's Are Saying</h2>
+  <div class="container">
+    <div class="tc reveal" style="margin-bottom:36px">
+      <div class="test-eyebrow">
+        <span class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+        <span class="test-eyebrow__sep"></span>
+        <span>Joining 150+ CRCs preparing for ACRP &amp; SOCRA</span>
+      </div>
+      <h2>Real students. Real results.</h2>
+    </div>
+
+    <!-- FEATURED -->
+    <div class="test-featured reveal" style="transition-delay:.1s">
+      <div class="test-featured__stars">&#9733; &#9733; &#9733; &#9733; &#9733;</div>
+      <p class="test-featured__text">"I was looking for a way to simulate the exam, and this QBank was the best way for me to study under time pressure. As a bad test taker, this was a game changer."</p>
+      <div class="test-featured__author">
+        <div class="test-featured__avatar">LS</div>
+        <div>
+          <div class="test-featured__name">Laila S.</div>
+          <div class="test-featured__role">Verified CR Qbank user</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SUPPORTING GRID -->
     <div class="test-grid">
-      <div class="test-card reveal" style="transition-delay:.1s">
-        <span class="test-card__quote">&ldquo;</span>
-        <p class="test-card__text">"I haven't found any other resources like this one."</p>
-        <p class="test-card__author"><strong>Brianna S.</strong> &mdash; SOCRA exam candidate</p>
+      <div class="test-card reveal" style="transition-delay:.15s">
+        <div class="test-card__stars">&#9733; &#9733; &#9733; &#9733; &#9733;</div>
+        <p class="test-card__text">"The QBank offers a well-structured range of questions that closely reflect real exam standards. The detailed explanations and user-friendly interface significantly enhanced my understanding and confidence while preparing."</p>
+        <div class="test-card__author">
+          <div class="test-card__avatar">UE</div>
+          <div class="test-card__meta">
+            <span class="test-card__name">Uchenna E.</span>
+            <span class="test-card__role">Verified user</span>
+          </div>
+        </div>
       </div>
+
       <div class="test-card reveal" style="transition-delay:.2s">
-        <span class="test-card__quote">&ldquo;</span>
-        <p class="test-card__text">"The Qbank offers a well-structured range of questions that closely reflect real exam standards. The detailed explanations and user-friendly interface significantly enhanced my understanding and confidence while preparing."</p>
-        <p class="test-card__author"><strong>Uchenna E.</strong> &mdash; Verified CR Qbank user</p>
+        <div class="test-card__stars">&#9733; &#9733; &#9733; &#9733; &#9733;</div>
+        <p class="test-card__text">"I haven't found any other resources like this one."</p>
+        <div class="test-card__author">
+          <div class="test-card__avatar">BS</div>
+          <div class="test-card__meta">
+            <span class="test-card__name">Brianna S.</span>
+            <span class="test-card__role">SOCRA exam candidate</span>
+          </div>
+        </div>
       </div>
-      <div class="test-card reveal" style="transition-delay:.3s">
-        <span class="test-card__quote">&ldquo;</span>
-        <p class="test-card__text">I spent $700 on a bootcamp and walked out more confused than when I started. I passed my ACRP-CP by building my own system &mdash; scenario-based questions, 30 minutes a day, while managing 37 trial sites. I built this because I wished it existed.</p>
-        <p class="test-card__author"><strong>Ish, ACRP-CP Certified</strong> &mdash; Creator</p>
+
+      <div class="test-card reveal" style="transition-delay:.25s">
+        <div class="test-card__stars">&#9733; &#9733; &#9733; &#9733; &#9733;</div>
+        <p class="test-card__text">"Overall, I believe it's a great product."</p>
+        <div class="test-card__author">
+          <div class="test-card__avatar">MQ</div>
+          <div class="test-card__meta">
+            <span class="test-card__name">Mahira Q.</span>
+            <span class="test-card__role">Verified user</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- CREATOR NOTE -->
+    <div class="test-creator reveal" style="transition-delay:.3s">
+      <div class="test-creator__avatar">IA</div>
+      <div class="test-creator__body">
+        <div class="test-creator__label">&#9999;&#65039; From the creator</div>
+        <p class="test-creator__text">"I spent $700 on a bootcamp and walked out more confused than when I started. I passed my ACRP-CP by building my own system &mdash; scenario-based questions, 30 minutes a day, while managing 37 trial sites. I built this because I wished it existed."</p>
+        <div class="test-creator__name">Ish</div>
+        <div class="test-creator__role">ACRP-CP Certified &middot; Founder of CR Qbank</div>
       </div>
     </div>
   </div>
