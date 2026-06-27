@@ -23,7 +23,6 @@
       --btn-fg: #fff; --btn-bg: rgba(23,15,76,1);
       --r: 8px; --font-h: 'Exo', sans-serif; --font-b: 'Open Sans', sans-serif;
       --header-h: 72px;
-      --announce-h: 44px;
     }
     *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
     html{scroll-behavior:smooth;scroll-padding-top:var(--header-h)}
@@ -49,34 +48,6 @@
     .btn--primary:hover{box-shadow:0 6px 24px rgba(23,15,76,.3);transform:translateY(-1px)}
     .btn--main{background:var(--main-fg);color:var(--main-bg)}
     .btn--secondary{background:var(--sec-fg);color:var(--sec-bg);box-shadow:0 4px 16px rgba(23,15,76,.15)}
-
-    /* ANNOUNCEMENT BAR */
-    .announce{position:fixed;top:0;left:0;right:0;z-index:600;height:var(--announce-h);background:linear-gradient(135deg,rgba(86,90,221,1) 0%,rgba(68,71,124,1) 100%);color:#fff;display:flex;align-items:center;justify-content:center;padding:0 48px 0 20px;font-size:.9rem;font-weight:500;line-height:1.3;box-shadow:0 2px 12px rgba(23,15,76,.15);transform:translateY(-100%);transition:transform .4s cubic-bezier(.4,0,.2,1)}
-    .announce.visible{transform:translateY(0)}
-    .announce__inner{display:flex;align-items:center;gap:12px;max-width:1200px}
-    .announce__dot{width:8px;height:8px;border-radius:50%;background:#4ade80;flex-shrink:0;box-shadow:0 0 0 0 rgba(74,222,128,.7);animation:announce-pulse 2s infinite}
-    @keyframes announce-pulse{0%{box-shadow:0 0 0 0 rgba(74,222,128,.7)}70%{box-shadow:0 0 0 8px rgba(74,222,128,0)}100%{box-shadow:0 0 0 0 rgba(74,222,128,0)}}
-    .announce__text{flex:1}
-    .announce__text strong{font-weight:700}
-    .announce__link{color:#fff;text-decoration:underline;text-underline-offset:3px;font-weight:600;white-space:nowrap;transition:opacity .2s}
-    .announce__link:hover{opacity:.8}
-    .announce__close{position:absolute;right:12px;top:50%;transform:translateY(-50%);background:none;border:none;cursor:pointer;width:32px;height:32px;display:flex;align-items:center;justify-content:center;border-radius:50%;color:#fff;transition:background .15s}
-    .announce__close:hover{background:rgba(255,255,255,.15)}
-    .announce__close svg{width:14px;height:14px;fill:currentColor}
-    body.has-announce .header{top:var(--announce-h)}
-    body.has-announce .header-spacer{height:calc(var(--header-h) + var(--announce-h))}
-    body.has-announce .mobile-drawer{padding-top:calc(var(--header-h) + var(--announce-h) + 20px)}
-    @media(max-width:640px){
-      :root{--announce-h:56px}
-      .announce{font-size:.82rem;padding:0 40px 0 16px}
-      .announce__inner{gap:8px}
-      .announce__full{display:none}
-      .announce__short{display:inline}
-    }
-    @media(min-width:641px){
-      .announce__short{display:none}
-      .announce__full{display:inline}
-    }
 
     .header{position:fixed;top:0;left:0;right:0;z-index:500;height:var(--header-h);background:rgba(255,255,255,.92);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid rgba(23,15,76,.06);transition:top .4s cubic-bezier(.4,0,.2,1),box-shadow .3s,background .3s}
     .header.scrolled{box-shadow:0 2px 20px rgba(23,15,76,.08);background:rgba(255,255,255,.97)}
@@ -176,12 +147,10 @@
     .feature-card p{font-size:.95rem;color:rgba(68,71,124,.7);line-height:1.6}
     @media(max-width:700px){.feature-row{grid-template-columns:1fr}}
 
-    /* TESTIMONIAL EYEBROW STAT */
     .test-eyebrow{display:inline-flex;align-items:center;gap:10px;background:rgba(86,90,221,.08);color:rgba(86,90,221,1);padding:8px 18px;border-radius:100px;font-size:.85rem;font-weight:600;margin-bottom:16px}
     .test-eyebrow .stars{color:#f59e0b;letter-spacing:1px;font-size:.8rem}
     .test-eyebrow__sep{width:1px;height:14px;background:rgba(86,90,221,.25)}
 
-    /* FEATURED HERO TESTIMONIAL */
     .test-featured{background:linear-gradient(135deg,rgba(86,90,221,1) 0%,rgba(68,71,124,1) 100%);border-radius:16px;padding:48px 56px;color:#fff;position:relative;overflow:hidden;margin-bottom:24px;box-shadow:0 12px 40px rgba(68,71,124,.18)}
     .test-featured::before{content:'\201C';position:absolute;top:-20px;left:32px;font-size:10rem;font-family:Georgia,serif;color:rgba(255,255,255,.12);line-height:1;pointer-events:none}
     .test-featured__stars{color:#fbbf24;font-size:1.1rem;letter-spacing:3px;margin-bottom:18px;position:relative}
@@ -192,7 +161,6 @@
     .test-featured__role{font-size:.85rem;color:rgba(255,255,255,.7);margin-top:2px}
     @media(max-width:768px){.test-featured{padding:36px 28px}.test-featured__text{font-size:1.2rem}.test-featured::before{font-size:7rem;top:-12px;left:18px}}
 
-    /* SUPPORTING CARDS GRID */
     .test-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-bottom:24px}
     .test-card{background:var(--bg);border:1px solid rgba(68,71,124,.12);border-radius:12px;padding:28px 24px;display:flex;flex-direction:column;gap:14px;transition:transform .25s ease,box-shadow .25s ease,border-color .25s ease;position:relative}
     .test-card:hover{transform:translateY(-3px);box-shadow:0 8px 24px rgba(68,71,124,.1);border-color:rgba(86,90,221,.25)}
@@ -206,7 +174,6 @@
     @media(max-width:900px){.test-grid{grid-template-columns:1fr 1fr}}
     @media(max-width:600px){.test-grid{grid-template-columns:1fr}}
 
-    /* CREATOR NOTE */
     .test-creator{background:rgba(240,241,255,.5);border:1px solid rgba(68,71,124,.1);border-radius:12px;padding:32px 36px;display:flex;gap:24px;align-items:flex-start;border-left:4px solid rgba(86,90,221,1)}
     .test-creator__label{display:inline-flex;align-items:center;gap:8px;background:rgba(86,90,221,1);color:#fff;padding:5px 14px;border-radius:100px;font-size:.7rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;margin-bottom:14px}
     .test-creator__avatar{width:64px;height:64px;border-radius:50%;background:rgba(86,90,221,.15);color:rgba(86,90,221,1);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:1.3rem;flex-shrink:0}
@@ -275,21 +242,6 @@
   </style>
 </head>
 <body>
-
-<!-- ANNOUNCEMENT BAR -->
-<div class="announce" id="announceBar" role="region" aria-label="Site announcement">
-  <div class="announce__inner">
-    <span class="announce__dot" aria-hidden="true"></span>
-    <span class="announce__text">
-      <span class="announce__full"><strong>Content update in progress:</strong> QBank questions are being refreshed to reflect <strong>ICH GCP E6(R3)</strong> &mdash; the biggest GCP revision since 1996.</span>
-      <span class="announce__short"><strong>Updating for ICH GCP E6(R3)</strong> &mdash; biggest GCP revision since 1996.</span>
-    </span>
-    <a href="/blog-ich-gcp-e6-r3-changes-explained.html" class="announce__link">Read more &rarr;</a>
-  </div>
-  <button class="announce__close" id="announceClose" aria-label="Dismiss announcement">
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960"><path d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z"/></svg>
-  </button>
-</div>
 
 <!-- MODAL -->
 <div class="modal-overlay" id="mlModal">
@@ -635,24 +587,6 @@
 
 <script>
 (function(){
-  /* ANNOUNCEMENT BAR */
-  var announceBar=document.getElementById('announceBar');
-  var announceClose=document.getElementById('announceClose');
-  var ANNOUNCE_KEY='crqb_announce_e6r3_dismissed';
-  var ANNOUNCE_TTL=7*24*60*60*1000; /* 7 days */
-  function shouldShowAnnounce(){
-    try{var stored=localStorage.getItem(ANNOUNCE_KEY);if(!stored)return true;return(Date.now()-parseInt(stored,10))>ANNOUNCE_TTL}catch(e){return true}
-  }
-  if(announceBar&&shouldShowAnnounce()){
-    document.body.classList.add('has-announce');
-    requestAnimationFrame(function(){announceBar.classList.add('visible')});
-    announceClose.addEventListener('click',function(){
-      announceBar.classList.remove('visible');
-      document.body.classList.remove('has-announce');
-      try{localStorage.setItem(ANNOUNCE_KEY,Date.now().toString())}catch(e){}
-    });
-  }
-
   var revealEls=document.querySelectorAll('.reveal,.reveal-left,.reveal-right');
   var obs=new IntersectionObserver(function(entries){entries.forEach(function(e){if(e.isIntersecting){e.target.classList.add('visible');obs.unobserve(e.target)}})},{threshold:0.12,rootMargin:'0px 0px -40px 0px'});
   revealEls.forEach(function(el){obs.observe(el)});
